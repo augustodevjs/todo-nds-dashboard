@@ -2,7 +2,6 @@ import React, { ReactNode } from 'react';
 
 import {
   Avatar,
-  Divider,
   Drawer,
   List,
   ListItemButton,
@@ -23,17 +22,10 @@ interface IlistItensLinkProps {
   label: string;
   icon: string;
   to: string;
-  onClick: () => void;
-}
-
-interface ListItemLinkProps {
-  label: string;
-  icon: string;
-  to: string;
   onClick?: () => void;
 }
 
-const ListItemLink: React.FC<ListItemLinkProps> = ({
+const ListItemLink: React.FC<IlistItensLinkProps> = ({
   icon,
   label,
   to,
@@ -50,7 +42,7 @@ const ListItemLink: React.FC<ListItemLinkProps> = ({
   };
 
   return (
-    <ListItemButton selected={!!match} onClick={handleClick}>
+    <ListItemButton selected={!!match} onClick={handleClick} color="">
       <ListItemIcon>{icon}</ListItemIcon>
       <ListItemText primary={label} />
     </ListItemButton>
@@ -70,7 +62,7 @@ export const DrawerMenu: React.FC<DrawerMenuProps> = ({ children }) => {
         variant={smDown ? 'temporary' : 'permanent'}
       >
         <Box
-          width={theme.spacing(28)}
+          width={theme.spacing(31.25)}
           height="100%"
           display="flex"
           flexDirection="column"
@@ -87,8 +79,6 @@ export const DrawerMenu: React.FC<DrawerMenuProps> = ({ children }) => {
               src="https://avatars.githubusercontent.com/u/90275457?s=400&u=e4a9c35d965dc42c38c6f0b3655a742b8f1f2aa9&v=4"
             />
           </Box>
-
-          <Divider />
 
           <Box flex={1}>
             <List component="nav">

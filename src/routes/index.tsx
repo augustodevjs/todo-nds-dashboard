@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { useDrawerContext } from '../shared/contexts';
+import { LayoutBase } from '../shared/layouts';
 
 export const AppRoutes = () => {
   const { setDrawerOptions } = useDrawerContext();
@@ -17,7 +18,14 @@ export const AppRoutes = () => {
 
   return (
     <Routes>
-      <Route path="/home" element={<h1>aksdjalsjk</h1>} />
+      <Route
+        path="/home"
+        element={
+          <LayoutBase title="oi" toolbars="oi">
+            aksdjask
+          </LayoutBase>
+        }
+      />
     </Routes>
   );
 };

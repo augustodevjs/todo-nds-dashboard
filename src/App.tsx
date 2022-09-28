@@ -1,18 +1,15 @@
 import { ThemeProvider } from '@mui/material';
 import { BrowserRouter } from 'react-router-dom';
 import { AppRoutes } from './routes';
-import { DrawerMenu } from './shared/components';
 import { DrawerProvider } from './shared/contexts';
-import { theme } from './shared/theme';
+import { Theme } from './shared/theme';
 
 export function App() {
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={Theme}>
       <BrowserRouter>
         <DrawerProvider>
-          <DrawerMenu>
-            <AppRoutes />
-          </DrawerMenu>
+          <AppRoutes />
         </DrawerProvider>
       </BrowserRouter>
     </ThemeProvider>

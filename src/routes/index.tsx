@@ -1,7 +1,6 @@
 import { useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { useDrawerContext } from '../shared/contexts';
-import { LayoutBase } from '../shared/layouts';
 
 export const AppRoutes = () => {
   const { setDrawerOptions } = useDrawerContext();
@@ -9,23 +8,21 @@ export const AppRoutes = () => {
   useEffect(() => {
     setDrawerOptions([
       {
-        label: 'Página Inicial',
+        label: 'Tarefas',
         icon: 'aeeh',
-        path: '/pagina-inicial',
+        path: '/home',
+      },
+      {
+        label: 'Listas',
+        icon: 'aeeh',
+        path: '/home2',
       },
     ]);
   }, []);
 
   return (
     <Routes>
-      <Route
-        path="/home"
-        element={
-          <LayoutBase title="oi" toolbars="oi">
-            aksdjask
-          </LayoutBase>
-        }
-      />
+      <Route path="/home" element={<h1>1209310</h1>} />
     </Routes>
   );
 };

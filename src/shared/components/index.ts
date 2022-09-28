@@ -1,1 +1,1 @@
-export * from './drawerMenu/DrawerMenu';
+export {};

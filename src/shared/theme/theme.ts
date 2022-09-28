@@ -52,8 +52,13 @@ export const Theme = createTheme({
     },
 
     background: {
-      paper: '#262626',
-      default: '#8c8c8c',
+      paper: '#434343',
+      default: '#1f1f1f',
+    },
+  },
+  typography: {
+    allVariants: {
+      color: '#fff',
     },
   },
 });

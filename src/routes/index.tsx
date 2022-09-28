@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { useDrawerContext } from '../shared/contexts';
+import { Drawer } from '../shared/layouts/MainLayout';
 
 export const AppRoutes = () => {
   const { setDrawerOptions } = useDrawerContext();
@@ -22,7 +23,14 @@ export const AppRoutes = () => {
 
   return (
     <Routes>
-      <Route path="/home" element={<h1>1209310</h1>} />
+      <Route
+        path="/home"
+        element={
+          <h1>
+            <Drawer />
+          </h1>
+        }
+      />
     </Routes>
   );
 };

@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
+import { SignIn } from '../pages';
 import { useDrawerContext } from '../shared/contexts';
 import { Drawer } from '../shared/layouts/MainLayout';
 
@@ -31,6 +32,7 @@ export const AppRoutes = () => {
           </h1>
         }
       />
+      <Route path="/" element={<SignIn />} />
     </Routes>
   );
 };

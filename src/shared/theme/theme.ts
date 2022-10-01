@@ -61,4 +61,14 @@ export const Theme = createTheme({
       color: '#fff',
     },
   },
+  components: {
+    MuiCssBaseline: {
+      styleOverrides: {
+        body: {
+          margin: 0,
+          padding: 0,
+        },
+      },
+    },
+  },
 });

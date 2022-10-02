@@ -9,7 +9,15 @@ export const GlobalStyle = createGlobalStyle`
 
   :focus {
     outline: 0;
-    box-shadow: 0 0 0 2px #00875F;
+    box-shadow: 0 0 0 2px #015F43;
+  }
+
+  a {
+    text-decoration: none;
+    :focus {
+      outline: none;
+      box-shadow: none;
+    }
   }
 
   body {

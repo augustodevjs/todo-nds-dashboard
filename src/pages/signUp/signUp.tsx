@@ -45,7 +45,12 @@ export const SignUp = () => {
 
         <S.Form onSubmit={handleSubmit(onSubmit)}>
           <h2>Nova Conta</h2>
-          <Input type="text" label="Nome" placeholder="Digite o seu nome" />
+          <Input
+            type="text"
+            label="Nome"
+            placeholder="Digite o seu nome"
+            id="name"
+          />
           <Input type="email" label="Email" placeholder="Digite o seu email" />
           <Input type="text" label="Senha" placeholder="Digite a sua senha" />
           <Input

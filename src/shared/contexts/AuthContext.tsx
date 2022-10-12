@@ -1,7 +1,13 @@
-import { createContext, ReactNode, useEffect, useState } from 'react';
+import {
+  createContext,
+  ReactNode,
+  useCallback,
+  useEffect,
+  useState,
+} from 'react';
 import { api } from '../api';
 
-interface IUser {
+interface User {
   accessToken: string;
   user: {
     name: string;
@@ -12,7 +18,7 @@ interface IUser {
 interface IAuthContext {
   login: (email: string, password: string) => Promise<void>;
   logout: () => void;
-  user: IUser | undefined;
+  user: User | null;
 }
 
 interface IAuthProviderProps {
@@ -22,11 +28,27 @@ interface IAuthProviderProps {
 export const AuthContext = createContext<IAuthContext>({} as IAuthContext);
 
 export const AuthProvider: React.FC<IAuthProviderProps> = ({ children }) => {
-  const [data, setData] = useState<IUser>();
+  const [data, setData] = useState<User | null>(null);
 
-  const login = async (email: string, password: string) => {
+  useEffect(() => {
+    const accessToken = localStorage.getItem('@todo_nds:accessToken');
+    const user = localStorage.getItem('@todo_nds:user');
+
+    if (accessToken && user) {
+      api.defaults.headers.common.Authorization = `Bearer ${accessToken}`;
+
+      setData({
+        accessToken,
+        user: JSON.parse(user),
+      });
+    } else {
+      setData(null);
+    }
+  }, []);
+
+  const login = useCallback(async (email: string, password: string) => {
     try {
-      const response = await api.post<IUser>('/Auth/login', {
+      const response = await api.post<User>('/Auth/login', {
         email,
         password,
       });
@@ -37,29 +59,19 @@ export const AuthProvider: React.FC<IAuthProviderProps> = ({ children }) => {
       localStorage.setItem('@todo_nds:accessToken', accessToken);
 
       api.defaults.headers.common.Authorization = `Bearer ${accessToken}`;
+
       setData({ accessToken, user });
     } catch (error) {
       alert('Não foi possível fazer o login');
     }
-  };
-
-  useEffect(() => {
-    const accessToken = localStorage.getItem('@todo_nds:accessToken');
-    const user = localStorage.getItem('@todo_nds:user');
-
-    if (accessToken && user) {
-      api.defaults.headers.common.Authorization = `Bearer ${accessToken}`;
-
-      setData({ accessToken, user: JSON.parse(user) });
-    }
   }, []);
 
-  const logout = () => {
+  const logout = useCallback(() => {
     localStorage.removeItem('@todo_nds:user');
     localStorage.removeItem('@todo_nds:accessToken');
 
-    setData(undefined);
-  };
+    setData(null);
+  }, []);
 
   return (
     <AuthContext.Provider value={{ login, logout, user: data }}>

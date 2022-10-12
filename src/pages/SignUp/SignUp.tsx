@@ -1,68 +1,80 @@
-import * as yup from 'yup';
-import { Link } from 'react-router-dom';
-import { useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
+import { Link, useNavigate } from 'react-router-dom';
 
-import { Button, Input } from '../../shared/components';
+import { Button, Particle, TextInput } from '../../shared/components';
 import Logo from '../../shared/assets/logo.svg';
 import * as S from './styles';
-
-interface IFormInputs {
-  name: string | undefined;
-  email: string | undefined;
-  password: string | undefined;
-  confirmPassword: string | undefined;
-}
-
-const signUpForm: yup.SchemaOf<IFormInputs> = yup.object({
-  name: yup.string(),
-  email: yup.string().email('E-mail inválido').required('E-mail é obrigatório'),
-  password: yup.string().required('Senha é obrigatório'),
-  confirmPassword: yup
-    .string()
-    .required('Confirmação de senha é obrigatório')
-    .oneOf([yup.ref('password'), 'Senhas não conferem.']),
-});
+import { FormEvent, useState } from 'react';
+import { api } from '../../shared/api';
 
 export const SignUp = () => {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<IFormInputs>({
-    mode: 'onBlur',
-    resolver: yupResolver(signUpForm),
-  });
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [passwordConfirm, setPasswordConfirm] = useState('');
 
-  const onSubmit = (data: IFormInputs) => console.log(data);
+  const navigate = useNavigate();
+
+  const handleSubmit = (event: FormEvent) => {
+    event.preventDefault();
+
+    if (!name || !email || !password || !passwordConfirm) {
+      alert('Preencha todos os campos corretamente!');
+    }
+
+    api
+      .post('/Auth/register', { name, email, password, passwordConfirm })
+      .then(() => {
+        alert('Usuário cadastrado com sucesso');
+        navigate('/');
+      })
+      .catch((error) => {
+        alert('Não foi possível cadastrar');
+        console.log(error);
+      });
+  };
 
   return (
-    <S.Container>
-      <S.Content>
-        <S.Logo>
-          <img src={Logo} alt="Logo da Aplicação" />
-        </S.Logo>
+    <>
+      <Particle />
+      <S.Container>
+        <S.Content>
+          <S.Logo>
+            <img src={Logo} alt="Logo da Aplicação" />
+          </S.Logo>
 
-        <S.Form onSubmit={handleSubmit(onSubmit)}>
-          <h2>Nova Conta</h2>
-          <Input
-            type="text"
-            label="Nome"
-            placeholder="Digite o seu nome"
-            id="name"
-          />
-          <Input type="email" label="Email" placeholder="Digite o seu email" />
-          <Input type="text" label="Senha" placeholder="Digite a sua senha" />
-          <Input
-            type="text"
-            label="Confirmação de Senha"
-            placeholder="Repita novamente sua senha"
-          />
-          <Button type="submit">Entrar</Button>
-        </S.Form>
+          <S.Form onSubmit={handleSubmit}>
+            <h2>Nova Conta</h2>
+            <TextInput
+              type="text"
+              label="Nome"
+              placeholder="Digite o seu nome"
+              id="name"
+              onChange={(e) => setName(e.target.value)}
+            />
+            <TextInput
+              type="email"
+              label="Email"
+              placeholder="Digite o seu email"
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            <TextInput
+              type="text"
+              label="Senha"
+              placeholder="Digite a sua senha"
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <TextInput
+              type="text"
+              label="Confirmação de Senha"
+              placeholder="Repita novamente sua senha"
+              onChange={(e) => setPasswordConfirm(e.target.value)}
+            />
+            <Button type="submit">Entrar</Button>
+          </S.Form>
 
-        <Link to="/">Já possui uma conta?</Link>
-      </S.Content>
-    </S.Container>
+          <Link to="/">Já possui uma conta?</Link>
+        </S.Content>
+      </S.Container>
+    </>
   );
 };

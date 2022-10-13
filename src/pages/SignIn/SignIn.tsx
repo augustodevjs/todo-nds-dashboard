@@ -17,7 +17,7 @@ export const SignIn = () => {
 
   return (
     <>
-      <Particle />
+      <Particle particlesColor="#00b37e" />
       <S.Container>
         <S.Content>
           <S.Logo>

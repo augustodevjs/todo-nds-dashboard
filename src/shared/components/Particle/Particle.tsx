@@ -45,13 +45,14 @@ export const Particle = ({
           },
           move: {
             enable: true,
-            speed: { min: 1, max: 5 },
+            speed: { min: 1, max: 3 },
+            direction: 'top',
           },
           opacity: {
             value: { min: 0.3, max: 0.7 },
           },
           size: {
-            value: { min: 1, max: 2 },
+            value: { min: 1.5, max: 2.5 },
           },
         },
       }}

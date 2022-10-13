@@ -18,7 +18,7 @@ interface User {
 interface IAuthContext {
   login: (email: string, password: string) => Promise<void>;
   logout: () => void;
-  user: User | null;
+  isAuthenticated: boolean;
 }
 
 interface IAuthProviderProps {
@@ -28,7 +28,7 @@ interface IAuthProviderProps {
 export const AuthContext = createContext<IAuthContext>({} as IAuthContext);
 
 export const AuthProvider: React.FC<IAuthProviderProps> = ({ children }) => {
-  const [data, setData] = useState<User | null>(null);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   useEffect(() => {
     const accessToken = localStorage.getItem('@todo_nds:accessToken');
@@ -36,13 +36,7 @@ export const AuthProvider: React.FC<IAuthProviderProps> = ({ children }) => {
 
     if (accessToken && user) {
       api.defaults.headers.common.Authorization = `Bearer ${accessToken}`;
-
-      setData({
-        accessToken,
-        user: JSON.parse(user),
-      });
-    } else {
-      setData(null);
+      setIsAuthenticated(true);
     }
   }, []);
 
@@ -60,21 +54,20 @@ export const AuthProvider: React.FC<IAuthProviderProps> = ({ children }) => {
 
       api.defaults.headers.common.Authorization = `Bearer ${accessToken}`;
 
-      setData({ accessToken, user });
+      setIsAuthenticated(true);
     } catch (error) {
       alert('Não foi possível fazer o login');
     }
   }, []);
 
   const logout = useCallback(() => {
+    setIsAuthenticated(false);
     localStorage.removeItem('@todo_nds:user');
     localStorage.removeItem('@todo_nds:accessToken');
-
-    setData(null);
   }, []);
 
   return (
-    <AuthContext.Provider value={{ login, logout, user: data }}>
+    <AuthContext.Provider value={{ login, logout, isAuthenticated }}>
       {children}
     </AuthContext.Provider>
   );

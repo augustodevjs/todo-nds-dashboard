@@ -3,11 +3,11 @@ import { Dashboard, SignIn, SignUp } from '../pages';
 import { useAuth } from '../shared/hooks/useAuth';
 
 export const AppRoutes = () => {
-  const { user } = useAuth();
+  const { isAuthenticated } = useAuth();
 
   return (
     <Routes>
-      {user ? (
+      {isAuthenticated ? (
         <Route path="/" element={<Dashboard />} />
       ) : (
         <>

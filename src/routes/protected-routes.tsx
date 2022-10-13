@@ -1,15 +1,12 @@
-import { Navigate } from 'react-router-dom';
+import { Navigate, Outlet } from 'react-router-dom';
+import { useAuth } from '../shared/hooks/useAuth';
 
 type ProtectedRouteProps = {
   children: JSX.Element;
 };
 
-export const ProtectedRoute = ({ children }: ProtectedRouteProps) => {
-  const user = localStorage.getItem('@todo_nds:user');
+export const ProtectedRoute = () => {
+  const { isAuthenticated } = useAuth();
 
-  if (!user) {
-    return <Navigate to="/" replace />;
-  }
-
-  return children;
+  return isAuthenticated ? <Outlet /> : <Navigate to="/" />;
 };

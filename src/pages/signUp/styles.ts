@@ -16,8 +16,8 @@ export const Logo = styled.div`
 export const Content = styled.div`
   display: flex;
   flex-direction: column;
-  width: 500px;
-  padding: 2rem 2rem;
+  width: 550px;
+  padding: 3rem 2rem;
   background-color: #202024;
   border-radius: 6px;
 

@@ -29,10 +29,13 @@ export const SignUp = () => {
     register,
     handleSubmit,
     formState: { errors },
+    getValues,
   } = useForm<IFormInputs>({
     mode: 'onBlur',
     resolver: yupResolver(signUpForm),
   });
+
+  console.log(getValues());
 
   const onSubmit = (data: IFormInputs) => console.log(data);
 
@@ -51,12 +54,23 @@ export const SignUp = () => {
             placeholder="Digite o seu nome"
             id="name"
           />
-          <Input type="email" label="Email" placeholder="Digite o seu email" />
-          <Input type="text" label="Senha" placeholder="Digite a sua senha" />
+          <Input
+            type="email"
+            label="Email"
+            placeholder="Digite o seu email"
+            {...register('email')}
+          />
+          <Input
+            type="text"
+            label="Senha"
+            placeholder="Digite a sua senha"
+            {...register('password')}
+          />
           <Input
             type="text"
             label="Confirmação de Senha"
             placeholder="Repita novamente sua senha"
+            {...register('confirmPassword')}
           />
           <Button type="submit">Entrar</Button>
         </S.Form>

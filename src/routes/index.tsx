@@ -1,11 +1,20 @@
 import { Routes, Route } from 'react-router-dom';
-import { SignIn, SignUp } from '../pages';
+import { Dashboard, SignIn, SignUp } from '../pages';
+import { useAuth } from '../shared/hooks/useAuth';
 
 export const AppRoutes = () => {
+  const { user } = useAuth();
+
   return (
     <Routes>
-      <Route path="/" element={<SignIn />} />
-      <Route path="/register" element={<SignUp />} />
+      {user ? (
+        <Route path="/" element={<Dashboard />} />
+      ) : (
+        <>
+          <Route path="/" element={<SignIn />} />
+          <Route path="/register" element={<SignUp />} />
+        </>
+      )}
     </Routes>
   );
 };

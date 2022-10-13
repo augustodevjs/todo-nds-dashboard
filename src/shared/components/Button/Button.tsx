@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 import * as S from './styles';
 
-interface ButtonProps {
+export interface ButtonProps {
   type?: 'button' | 'reset' | 'submit';
   onClick?: () => void;
   children: ReactNode;

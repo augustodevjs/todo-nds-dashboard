@@ -5,6 +5,7 @@ export const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 0 1rem;
 `;
 
 export const Logo = styled.div`
@@ -20,14 +21,12 @@ export const Content = styled.div`
   padding: 3rem 2rem;
   background-color: #202024;
   border-radius: 6px;
-
   a {
     font-weight: 600;
     font-size: 14px;
     color: #00875f;
     transition: filter 0.2s linear;
     align-self: center;
-
     &:hover {
       filter: brightness(1.3);
     }
@@ -43,7 +42,6 @@ export const Form = styled.form`
     align-items: center;
     gap: 0.5rem;
     margin-bottom: 1.5rem;
-
     &::before {
       content: '';
       display: inline-block;
@@ -52,7 +50,6 @@ export const Form = styled.form`
       background-color: #00b37e;
     }
   }
-
   button {
     margin: 0.75rem 0 1.5rem 0;
     padding: 0.75rem;

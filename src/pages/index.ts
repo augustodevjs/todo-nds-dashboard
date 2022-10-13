@@ -1,2 +1,3 @@
-export * from './signIn/signIn';
-export * from './signUp/signUp';
+export * from './SignIn/SignIn';
+export * from './SignUp/SignUp';
+export * from './Dashboard';

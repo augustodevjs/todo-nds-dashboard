@@ -5,7 +5,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 
 import { Button, Input } from '../../shared/components';
 import Logo from '../../shared/assets/logo.svg';
-import * as S from './styles';
+import * as S from './';
 
 interface IFormInputs {
   name: string | undefined;

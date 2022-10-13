@@ -1,2 +1,3 @@
-export * from './Button/button';
-export * from './Input/input';
+export * from './Button/Button';
+export * from './TextInput/TextInput';
+export * from './Particle/Particle';

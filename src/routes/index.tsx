@@ -1,13 +1,20 @@
 import { Routes, Route } from 'react-router-dom';
-import { SignIn, SignUp } from '../pages';
-import { SideBar } from '../shared/layouts';
+import { Dashboard, SignIn, SignUp } from '../pages';
+import { useAuth } from '../shared/hooks/useAuth';
 
 export const AppRoutes = () => {
+  const { isAuthenticated } = useAuth();
+
   return (
     <Routes>
-      <Route path="/" element={<SignIn />} />
-      <Route path="/register" element={<SignUp />} />
-      <Route path="/sidebar" element={<SideBar />} />
+      {isAuthenticated ? (
+        <Route path="/" element={<Dashboard />} />
+      ) : (
+        <>
+          <Route path="/" element={<SignIn />} />
+          <Route path="/register" element={<SignUp />} />
+        </>
+      )}
     </Routes>
   );
 };

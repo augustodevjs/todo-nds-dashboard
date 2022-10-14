@@ -23,13 +23,12 @@ export const SignUp = () => {
 
     AuthCreateUser({ name, email, password, passwordConfirm }).then(
       (result) => {
-        console.log(result);
         if (result instanceof Error) {
           return result.message;
-        } else {
-          alert('Usuário cadastrado com sucesso');
-          navigate('/');
         }
+
+        alert('Usuário cadastrado com sucesso');
+        navigate('/');
       },
     );
   };

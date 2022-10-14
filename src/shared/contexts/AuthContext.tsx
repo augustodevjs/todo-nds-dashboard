@@ -41,7 +41,6 @@ export const AuthProvider: React.FC<IAuthProviderProps> = ({ children }) => {
     } else {
       localStorage.setItem('@todo_nds:user', JSON.stringify(result.user));
       localStorage.setItem('@todo_nds:accessToken', result.accessToken);
-
       api.defaults.headers.common.Authorization = `Bearer ${result.accessToken}`;
     }
 

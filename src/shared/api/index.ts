@@ -1,1 +1,1 @@
-export * from './axios-config/api';
+export * from './axios-config';

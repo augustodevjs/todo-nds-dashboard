@@ -5,18 +5,11 @@ import {
   useEffect,
   useState,
 } from 'react';
-import { api } from '../api';
-
-interface User {
-  accessToken: string;
-  user: {
-    name: string;
-    email: string;
-  };
-}
+import { api } from '../api/axios-config';
+import { AuthService } from '../services';
 
 interface IAuthContext {
-  login: (email: string, password: string) => Promise<void>;
+  login: (email: string, password: string) => Promise<string | void>;
   logout: () => void;
   isAuthenticated: boolean;
 }
@@ -31,8 +24,8 @@ export const AuthProvider: React.FC<IAuthProviderProps> = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   useEffect(() => {
-    const accessToken = localStorage.getItem('@todo_nds:accessToken');
     const user = localStorage.getItem('@todo_nds:user');
+    const accessToken = localStorage.getItem('@todo_nds:accessToken');
 
     if (accessToken && user) {
       api.defaults.headers.common.Authorization = `Bearer ${accessToken}`;
@@ -41,29 +34,25 @@ export const AuthProvider: React.FC<IAuthProviderProps> = ({ children }) => {
   }, []);
 
   const login = useCallback(async (email: string, password: string) => {
-    try {
-      const response = await api.post<User>('/Auth/login', {
-        email,
-        password,
-      });
+    const result = await AuthService(email, password);
 
-      const { accessToken, user } = response.data;
+    if (result instanceof Error) {
+      return result.message;
+    } else {
+      localStorage.setItem('@todo_nds:user', JSON.stringify(result.user));
+      localStorage.setItem('@todo_nds:accessToken', result.accessToken);
 
-      localStorage.setItem('@todo_nds:user', JSON.stringify(user));
-      localStorage.setItem('@todo_nds:accessToken', accessToken);
-
-      api.defaults.headers.common.Authorization = `Bearer ${accessToken}`;
-
-      setIsAuthenticated(true);
-    } catch (error) {
-      alert('Não foi possível fazer o login');
+      api.defaults.headers.common.Authorization = `Bearer ${result.accessToken}`;
     }
+
+    setIsAuthenticated(true);
   }, []);
 
   const logout = useCallback(() => {
-    setIsAuthenticated(false);
     localStorage.removeItem('@todo_nds:user');
     localStorage.removeItem('@todo_nds:accessToken');
+
+    setIsAuthenticated(false);
   }, []);
 
   return (

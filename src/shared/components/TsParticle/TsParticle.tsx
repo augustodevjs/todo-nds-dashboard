@@ -8,9 +8,9 @@ interface ParticleProps {
   particlesColor?: string;
 }
 
-export const Particle = ({
+export const TsParticle = ({
   backgroundColor = '#121214',
-  particlesColor = '#ffffff',
+  particlesColor = '#00b37e',
 }: ParticleProps) => {
   const particlesInit = useCallback(async (engine: Engine) => {
     await loadFull(engine);

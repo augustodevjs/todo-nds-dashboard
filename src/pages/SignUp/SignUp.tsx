@@ -1,10 +1,10 @@
 import { Link, useNavigate } from 'react-router-dom';
 
-import { Button, Particle, TextInput } from '../../shared/components';
+import { Button, TextInput, TsParticle } from '../../shared/components';
 import Logo from '../../shared/assets/logo.svg';
 import * as S from './styles';
 import { FormEvent, useState } from 'react';
-import { api } from '../../shared/api';
+import { AuthCreateUser } from '../../shared/services';
 
 export const SignUp = () => {
   const [name, setName] = useState('');
@@ -21,21 +21,22 @@ export const SignUp = () => {
       alert('Preencha todos os campos corretamente!');
     }
 
-    api
-      .post('/Auth/register', { name, email, password, passwordConfirm })
-      .then(() => {
-        alert('Usuário cadastrado com sucesso');
-        navigate('/');
-      })
-      .catch((error) => {
-        alert('Não foi possível cadastrar');
-        console.log(error);
-      });
+    AuthCreateUser({ name, email, password, passwordConfirm }).then(
+      (result) => {
+        console.log(result);
+        if (result instanceof Error) {
+          return result.message;
+        } else {
+          alert('Usuário cadastrado com sucesso');
+          navigate('/');
+        }
+      },
+    );
   };
 
   return (
     <>
-      <Particle particlesColor="#00b37e" />
+      <TsParticle />
       <S.Container>
         <S.Content>
           <S.Logo>

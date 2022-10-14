@@ -1,13 +1,13 @@
-import { Particle } from './Particle';
+import { TsParticle } from './TsParticle';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 
 export default {
   title: 'Components/Particle',
-  component: Particle,
-} as ComponentMeta<typeof Particle>;
+  component: TsParticle,
+} as ComponentMeta<typeof TsParticle>;
 
-const Template: ComponentStory<typeof Particle> = (args) => (
-  <Particle {...args} />
+const Template: ComponentStory<typeof TsParticle> = (args) => (
+  <TsParticle {...args} />
 );
 
 export const Base = Template.bind({});

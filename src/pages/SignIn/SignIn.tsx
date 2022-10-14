@@ -1,4 +1,4 @@
-import { Button, Particle, TextInput } from '../../shared/components';
+import { Button, TextInput, TsParticle } from '../../shared/components';
 import Logo from '../../shared/assets/logo.svg';
 import * as S from './styles';
 import { Link } from 'react-router-dom';
@@ -12,12 +12,12 @@ export const SignIn = () => {
 
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
-    login(email, password);
+    await login(email, password);
   };
 
   return (
     <>
-      <Particle particlesColor="#00b37e" />
+      <TsParticle />
       <S.Container>
         <S.Content>
           <S.Logo>

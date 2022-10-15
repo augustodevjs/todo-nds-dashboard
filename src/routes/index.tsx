@@ -1,5 +1,5 @@
 import { Routes, Route } from 'react-router-dom';
-import { Dashboard, SignIn, SignUp } from '../pages';
+import { Tasks, SignIn, SignUp, Lists } from '../pages';
 import { useAuth } from '../shared/hooks/useAuth';
 
 export const AppRoutes = () => {
@@ -9,7 +9,8 @@ export const AppRoutes = () => {
     <Routes>
       {isAuthenticated ? (
         <>
-          <Route path="/listas" element={<Dashboard />} />
+          <Route path="/tasks" element={<Tasks />} />
+          <Route path="/lists" element={<Lists />} />
         </>
       ) : (
         <>

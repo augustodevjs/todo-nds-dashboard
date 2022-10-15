@@ -14,7 +14,7 @@ export const SignIn = () => {
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
     await login(email, password);
-    navigate('/listas');
+    navigate('/tasks');
   };
 
   return (

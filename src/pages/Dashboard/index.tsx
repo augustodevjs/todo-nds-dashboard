@@ -25,7 +25,7 @@ export const Dashboard = () => {
           </div>
         </header> */}
 
-        <aside className={`sidebar ${!show ? 'show' : undefined}`}>
+        <S.aside show={!show}>
           <nav className="nav">
             <div>
               <div className={!show ? 'logo' : 'withoutLogo'}>
@@ -50,7 +50,7 @@ export const Dashboard = () => {
               <span className="nav-link-name">Logout</span>
             </Link>
           </nav>
-        </aside>
+        </S.aside>
 
         <h1>Content</h1>
       </S.Container>

@@ -8,7 +8,9 @@ export const AppRoutes = () => {
   return (
     <Routes>
       {isAuthenticated ? (
-        <Route path="/" element={<Dashboard />} />
+        <>
+          <Route path="/listas" element={<Dashboard />} />
+        </>
       ) : (
         <>
           <Route path="/" element={<SignIn />} />

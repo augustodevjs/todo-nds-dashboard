@@ -6,6 +6,7 @@ import Logo from '../../shared/assets/logo.svg';
 
 import { BiMenu, BiTask } from 'react-icons/bi';
 import { MdLogout, MdList } from 'react-icons/md';
+import * as S from './styles';
 
 export const Dashboard = () => {
   const { logout } = useAuth();
@@ -13,7 +14,7 @@ export const Dashboard = () => {
 
   return (
     <>
-      <main className={!show ? 'space-toggle' : undefined}>
+      <S.Container show={!show}>
         {/* <header className={`header ${!show ? 'space-toggle' : undefined}`}>
           <div className="header-toggle" onClick={() => setShow(!show)}>
             <BiMenu
@@ -35,11 +36,11 @@ export const Dashboard = () => {
               <div className="nav-list">
                 <Link to="/dashboard" className="nav-link active">
                   <BiTask />
-                  <span className="nav-link-name">Dashboard</span>
+                  <span className="nav-link-name">Tarefas</span>
                 </Link>
                 <Link to="/hotel" className="nav-link">
                   <MdList />
-                  <span className="nav-link-name">Hotel</span>
+                  <span className="nav-link-name">Listas</span>
                 </Link>
               </div>
             </div>
@@ -52,7 +53,7 @@ export const Dashboard = () => {
         </aside>
 
         <h1>Content</h1>
-      </main>
+      </S.Container>
     </>
   );
 };

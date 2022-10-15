@@ -1,7 +1,7 @@
 import { Button, TextInput, TsParticle } from '../../shared/components';
 import Logo from '../../shared/assets/logo.svg';
 import * as S from './styles';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { FormEvent, useState } from 'react';
 import { useAuth } from '../../shared/hooks/useAuth';
 
@@ -9,10 +9,12 @@ export const SignIn = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const { login } = useAuth();
+  const navigate = useNavigate();
 
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
     await login(email, password);
+    navigate('/listas');
   };
 
   return (

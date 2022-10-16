@@ -6,7 +6,7 @@ type Props = {
 
 export const Button = styled.button<Props>`
   width: 100%;
-  padding: 1rem 1.75rem;
+  padding: 0.75rem 1.75rem;
   color: #fff;
   background-color: #00b37e;
   border: none;

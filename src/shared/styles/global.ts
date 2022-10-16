@@ -8,7 +8,7 @@ export const GlobalStyle = createGlobalStyle`
     font-family: 'Roboto';
   }
 
-  input, button {
+  input {
     :focus {
       outline: 0;
       box-shadow: 0 0 0 2px #015F43;

@@ -1,4 +1,5 @@
 import { ComponentType, InputHTMLAttributes, ReactNode } from 'react';
+import { TableProps as ReactDataTableProps } from 'react-data-table-component';
 
 export interface ButtonProps {
   type?: 'button' | 'reset' | 'submit';
@@ -8,6 +9,7 @@ export interface ButtonProps {
 }
 
 export interface IconButtonProps {
+  variant: 'edit' | 'remove';
   icon: ComponentType;
   onClick: () => void;
 }
@@ -27,3 +29,5 @@ export interface ParticleProps {
   backgroundColor?: string;
   particlesColor?: string;
 }
+
+export type TableProps = ReactDataTableProps<any>;

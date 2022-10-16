@@ -2,11 +2,13 @@ import { api } from '../api/axios-config';
 import { AuthService } from '../services';
 import { createContext, useCallback, useEffect, useState } from 'react';
 import { IAuthContext, IAuthProviderProps } from '../domain-types';
+import { useNavigate } from 'react-router-dom';
 
 export const AuthContext = createContext<IAuthContext>({} as IAuthContext);
 
 export const AuthProvider: React.FC<IAuthProviderProps> = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const user = localStorage.getItem('@todo_nds:user');
@@ -27,6 +29,7 @@ export const AuthProvider: React.FC<IAuthProviderProps> = ({ children }) => {
       localStorage.setItem('@todo_nds:user', JSON.stringify(result.user));
       localStorage.setItem('@todo_nds:accessToken', result.accessToken);
       api.defaults.headers.common.Authorization = `Bearer ${result.accessToken}`;
+      navigate('/tasks');
     }
 
     setIsAuthenticated(true);

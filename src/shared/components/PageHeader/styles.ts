@@ -4,7 +4,7 @@ export const Header = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 1.25rem;
+  margin-bottom: 1rem;
 `;
 
 export const HeadingWrapper = styled.div`
@@ -13,11 +13,11 @@ export const HeadingWrapper = styled.div`
 
 export const IconWrapper = styled.div`
   display: flex;
-  font-size: 2rem;
+  font-size: 1.5rem;
   align-items: center;
   justify-content: center;
-  width: 60px;
-  height: 60px;
+  width: 50px;
+  height: 50px;
   border-radius: 0.25rem;
   background-color: #323238;
   color: #fff;
@@ -25,13 +25,13 @@ export const IconWrapper = styled.div`
 `;
 
 export const Title = styled.h1`
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   font-weight: bold;
   margin-bottom: 0.5rem;
 `;
 
 export const Description = styled.p`
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   font-weight: 600;
   opacity: 0.9;
   margin-bottom: 0;

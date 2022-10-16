@@ -1,143 +1,83 @@
 import { SideBar } from '../../shared/layout';
-import DataTable, {
-  TableColumn,
-  createTheme,
-} from 'react-data-table-component';
+import { TableColumn, createTheme } from 'react-data-table-component';
 import { FaTrash, FaPen } from 'react-icons/fa';
-import { Button, IconButton, PageHeader } from '../../shared/components';
+import { Button, IconButton, PageHeader, Table } from '../../shared/components';
 import { MdList } from 'react-icons/md';
 
 type DataRow = {
   nome: string;
   descricacao: string;
+  data: string;
 };
-
-createTheme('dark', {
-  text: {
-    primary: '#C4C4CC',
-  },
-  background: {
-    default: '#29292E',
-  },
-  sortFocus: {
-    default: '#2aa198',
-  },
-});
 
 export const Lists = () => {
   const data: DataRow[] = [
     {
       nome: 'João Augusto',
-      descricacao: 'lorem ipsum',
+      descricacao:
+        'Realizar a primeira task da sprint 1 e fazer refatoração do código',
+      data: '20/20/2022',
     },
     {
       nome: 'João Augusto',
-      descricacao: 'lorem ipsum',
+      descricacao:
+        'Realizar a primeira task da sprint 1 e fazer refatoração do código',
+      data: '20/20/2022',
     },
     {
       nome: 'João Augusto',
-      descricacao: 'lorem ipsum',
+      descricacao:
+        'Realizar a primeira task da sprint 1 e fazer refatoração do código',
+      data: '20/20/2022',
     },
     {
       nome: 'João Augusto',
-      descricacao: 'lorem ipsum',
+      descricacao:
+        'Realizar a primeira task da sprint 1 e fazer refatoração do código',
+      data: '20/20/2022',
     },
     {
       nome: 'João Augusto',
-      descricacao: 'lorem ipsum',
+      descricacao:
+        'Realizar a primeira task da sprint 1 e fazer refatoração do código ',
+      data: '20/20/2022',
     },
     {
       nome: 'João Augusto',
-      descricacao: 'lorem ipsum',
+      descricacao:
+        'Realizar a primeira task da sprint 1 e fazer refatoração do código ',
+      data: '20/20/2022',
     },
     {
       nome: 'João Augusto',
-      descricacao: 'lorem ipsum',
-    },
-    {
-      nome: 'João Augusto',
-      descricacao: 'lorem ipsum',
-    },
-    {
-      nome: 'João Augusto',
-      descricacao: 'lorem ipsum',
-    },
-    {
-      nome: 'João Augusto',
-      descricacao: 'lorem ipsum',
-    },
-    {
-      nome: 'João Augusto',
-      descricacao: 'lorem ipsum',
-    },
-    {
-      nome: 'João Augusto',
-      descricacao: 'lorem ipsum',
-    },
-    {
-      nome: 'João Augusto',
-      descricacao: 'lorem ipsum',
-    },
-    {
-      nome: 'João Augusto',
-      descricacao: 'lorem ipsum',
-    },
-    {
-      nome: 'João Augusto',
-      descricacao: 'lorem ipsum',
-    },
-    {
-      nome: 'João Augusto',
-      descricacao: 'lorem ipsum',
-    },
-    {
-      nome: 'João Augusto',
-      descricacao: 'lorem ipsum',
-    },
-    {
-      nome: 'João Augusto',
-      descricacao: 'lorem ipsum',
-    },
-    {
-      nome: 'João Augusto',
-      descricacao: 'lorem ipsum',
-    },
-    {
-      nome: 'João Augusto',
-      descricacao: 'lorem ipsum',
-    },
-    {
-      nome: 'João Augusto',
-      descricacao: 'lorem ipsum',
-    },
-    {
-      nome: 'João Augusto',
-      descricacao: 'lorem ipsum',
-    },
-    {
-      nome: 'João Augusto',
-      descricacao: 'lorem ipsum',
-    },
-    {
-      nome: 'João Augusto',
-      descricacao: 'lorem ipsum',
+      descricacao:
+        'Realizar a primeira task da sprint 1 e fazer refatoração do código ',
+      data: '20/20/2022',
     },
     {
       nome: 'Rafaela',
-      descricacao: 'lorem ipsum',
+      descricacao:
+        'Realizar a primeira task da sprint 1 e fazer refatoração do código ',
+      data: '20/20/2022',
     },
     {
       nome: 'Biejam',
-      descricacao: 'lorem ipsum',
+      descricacao:
+        'Realizar a primeira task da sprint 1 e fazer refatoração do código ',
+      data: '20/20/2022',
     },
 
     {
       nome: 'Pedro',
-      descricacao: 'lorem ipsum',
+      descricacao:
+        'Realizar a primeira task da sprint 1 e fazer refatoração do código ',
+      data: '20/20/2022',
     },
     {
       nome: 'Eliza',
-      descricacao: 'lorem ipsum',
+      descricacao:
+        'Realizar a primeira task da sprint 1 e fazer refatoração do código ',
+      data: '20/20/2022',
     },
   ];
 
@@ -149,6 +89,11 @@ export const Lists = () => {
       sortable: true,
     },
     {
+      name: 'Data',
+      selector: (row) => row.data,
+      center: true,
+    },
+    {
       name: 'Descrição',
       selector: (row) => row.descricacao,
       center: true,
@@ -157,8 +102,16 @@ export const Lists = () => {
       name: 'Ações',
       cell: (row) => (
         <>
-          <IconButton icon={FaPen} onClick={() => console.log('Editar')} />
-          <IconButton icon={FaTrash} onClick={() => console.log('Remover')} />
+          <IconButton
+            icon={FaPen}
+            variant="edit"
+            onClick={() => alert('Editar')}
+          />
+          <IconButton
+            variant="remove"
+            icon={FaTrash}
+            onClick={() => alert('Remover')}
+          />
         </>
       ),
       center: true,
@@ -174,7 +127,8 @@ export const Lists = () => {
           icon={MdList}
           action={<Button transparent>Novo</Button>}
         />
-        <DataTable columns={columns} data={data} theme="dark" pagination />
+
+        <Table columns={columns} data={data} />
       </>
     </SideBar>
   );

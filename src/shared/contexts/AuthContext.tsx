@@ -1,22 +1,7 @@
-import {
-  createContext,
-  ReactNode,
-  useCallback,
-  useEffect,
-  useState,
-} from 'react';
 import { api } from '../api/axios-config';
 import { AuthService } from '../services';
-
-interface IAuthContext {
-  login: (email: string, password: string) => Promise<string | void>;
-  logout: () => void;
-  isAuthenticated: boolean;
-}
-
-interface IAuthProviderProps {
-  children: ReactNode;
-}
+import { createContext, useCallback, useEffect, useState } from 'react';
+import { IAuthContext, IAuthProviderProps } from '../domain-types';
 
 export const AuthContext = createContext<IAuthContext>({} as IAuthContext);
 

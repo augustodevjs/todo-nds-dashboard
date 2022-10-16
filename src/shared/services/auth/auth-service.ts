@@ -1,12 +1,5 @@
 import { api } from '../../api/axios-config';
-
-interface IAuth {
-  accessToken: string;
-  user: {
-    name: string;
-    email: string;
-  };
-}
+import { IAuth } from '../../domain-types';
 
 export const AuthService = async (
   email: string,

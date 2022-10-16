@@ -1,12 +1,8 @@
 import { useCallback } from 'react';
-import type { Container, Engine } from 'tsparticles-engine';
 import Particles from 'react-tsparticles';
 import { loadFull } from 'tsparticles';
-
-interface ParticleProps {
-  backgroundColor?: string;
-  particlesColor?: string;
-}
+import type { Container, Engine } from 'tsparticles-engine';
+import { ParticleProps } from '../../domain-types';
 
 export const TsParticle = ({
   backgroundColor = '#121214',

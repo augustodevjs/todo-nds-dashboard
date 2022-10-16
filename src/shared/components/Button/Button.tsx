@@ -1,12 +1,5 @@
-import { ReactNode } from 'react';
+import { ButtonProps } from '../../domain-types';
 import * as S from './styles';
-
-export interface ButtonProps {
-  type?: 'button' | 'reset' | 'submit';
-  onClick?: () => void;
-  children: ReactNode;
-  transparent?: boolean;
-}
 
 export const Button = ({
   children,

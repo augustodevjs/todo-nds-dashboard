@@ -1,16 +1,123 @@
 import { SideBar } from '../../shared/layout';
-import DataTable, { TableColumn } from 'react-data-table-component';
+import DataTable, {
+  TableColumn,
+  createTheme,
+} from 'react-data-table-component';
 import { FaTrash, FaPen } from 'react-icons/fa';
-import { Button, PageHeader } from '../../shared/components';
-import { MdInbox, MdList } from 'react-icons/md';
+import { Button, IconButton, PageHeader } from '../../shared/components';
+import { MdList } from 'react-icons/md';
 
 type DataRow = {
   nome: string;
   descricacao: string;
 };
 
+createTheme('dark', {
+  text: {
+    primary: '#C4C4CC',
+  },
+  background: {
+    default: '#29292E',
+  },
+  sortFocus: {
+    default: '#2aa198',
+  },
+});
+
 export const Lists = () => {
   const data: DataRow[] = [
+    {
+      nome: 'João Augusto',
+      descricacao: 'lorem ipsum',
+    },
+    {
+      nome: 'João Augusto',
+      descricacao: 'lorem ipsum',
+    },
+    {
+      nome: 'João Augusto',
+      descricacao: 'lorem ipsum',
+    },
+    {
+      nome: 'João Augusto',
+      descricacao: 'lorem ipsum',
+    },
+    {
+      nome: 'João Augusto',
+      descricacao: 'lorem ipsum',
+    },
+    {
+      nome: 'João Augusto',
+      descricacao: 'lorem ipsum',
+    },
+    {
+      nome: 'João Augusto',
+      descricacao: 'lorem ipsum',
+    },
+    {
+      nome: 'João Augusto',
+      descricacao: 'lorem ipsum',
+    },
+    {
+      nome: 'João Augusto',
+      descricacao: 'lorem ipsum',
+    },
+    {
+      nome: 'João Augusto',
+      descricacao: 'lorem ipsum',
+    },
+    {
+      nome: 'João Augusto',
+      descricacao: 'lorem ipsum',
+    },
+    {
+      nome: 'João Augusto',
+      descricacao: 'lorem ipsum',
+    },
+    {
+      nome: 'João Augusto',
+      descricacao: 'lorem ipsum',
+    },
+    {
+      nome: 'João Augusto',
+      descricacao: 'lorem ipsum',
+    },
+    {
+      nome: 'João Augusto',
+      descricacao: 'lorem ipsum',
+    },
+    {
+      nome: 'João Augusto',
+      descricacao: 'lorem ipsum',
+    },
+    {
+      nome: 'João Augusto',
+      descricacao: 'lorem ipsum',
+    },
+    {
+      nome: 'João Augusto',
+      descricacao: 'lorem ipsum',
+    },
+    {
+      nome: 'João Augusto',
+      descricacao: 'lorem ipsum',
+    },
+    {
+      nome: 'João Augusto',
+      descricacao: 'lorem ipsum',
+    },
+    {
+      nome: 'João Augusto',
+      descricacao: 'lorem ipsum',
+    },
+    {
+      nome: 'João Augusto',
+      descricacao: 'lorem ipsum',
+    },
+    {
+      nome: 'João Augusto',
+      descricacao: 'lorem ipsum',
+    },
     {
       nome: 'João Augusto',
       descricacao: 'lorem ipsum',
@@ -39,6 +146,7 @@ export const Lists = () => {
       name: 'Nome',
       selector: (row) => row.nome,
       center: true,
+      sortable: true,
     },
     {
       name: 'Descrição',
@@ -49,8 +157,8 @@ export const Lists = () => {
       name: 'Ações',
       cell: (row) => (
         <>
-          <FaPen />
-          <FaTrash />
+          <IconButton icon={FaPen} onClick={() => console.log('Editar')} />
+          <IconButton icon={FaTrash} onClick={() => console.log('Remover')} />
         </>
       ),
       center: true,
@@ -66,7 +174,7 @@ export const Lists = () => {
           icon={MdList}
           action={<Button transparent>Novo</Button>}
         />
-        <DataTable columns={columns} data={data} theme="dark" />
+        <DataTable columns={columns} data={data} theme="dark" pagination />
       </>
     </SideBar>
   );

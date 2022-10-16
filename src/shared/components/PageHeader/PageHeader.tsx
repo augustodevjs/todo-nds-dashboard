@@ -1,12 +1,5 @@
-import { ComponentType, ReactNode } from 'react';
+import { PageHeaderProps } from '../../domain-types';
 import * as S from './styles';
-
-type PageHeaderProps = {
-  title: string;
-  description: string;
-  icon: ComponentType;
-  action?: ReactNode;
-};
 
 export const PageHeader: React.FC<PageHeaderProps> = ({
   description,

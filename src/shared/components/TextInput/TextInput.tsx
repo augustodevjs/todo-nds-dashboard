@@ -1,9 +1,5 @@
-import { InputHTMLAttributes } from 'react';
+import { TextInputProps } from '../../domain-types';
 import * as S from './styles';
-
-export interface TextInputProps extends InputHTMLAttributes<HTMLInputElement> {
-  label: string;
-}
 
 export const TextInput = ({ label, ...rest }: TextInputProps) => {
   return (

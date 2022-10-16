@@ -1,11 +1,5 @@
 import { api } from '../../api/axios-config';
-
-interface IRegister {
-  name: string;
-  email: string;
-  password: string;
-  passwordConfirm: string;
-}
+import { IRegister } from '../../domain-types';
 
 export const AuthCreateUser = async (
   data: IRegister,

@@ -5,11 +5,17 @@ export interface ButtonProps {
   type?: 'button' | 'reset' | 'submit';
   onClick?: () => void;
   children: ReactNode;
+  transparent?: boolean;
 }
 
-export const Button = ({ children, onClick, type }: ButtonProps) => {
+export const Button = ({
+  children,
+  onClick,
+  type,
+  transparent = false,
+}: ButtonProps) => {
   return (
-    <S.Button type={type} onClick={onClick}>
+    <S.Button transparent={transparent} type={type} onClick={onClick}>
       {children}
     </S.Button>
   );

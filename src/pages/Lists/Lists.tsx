@@ -1,7 +1,8 @@
 import { SideBar } from '../../shared/layout';
-import * as S from './styles';
 import DataTable, { TableColumn } from 'react-data-table-component';
 import { FaTrash, FaPen } from 'react-icons/fa';
+import { Button, PageHeader } from '../../shared/components';
+import { MdInbox, MdList } from 'react-icons/md';
 
 type DataRow = {
   nome: string;
@@ -58,9 +59,15 @@ export const Lists = () => {
 
   return (
     <SideBar>
-      <S.Container>
+      <>
+        <PageHeader
+          title="Listas"
+          description="Página de gerenciamento das listas"
+          icon={MdList}
+          action={<Button transparent>Novo</Button>}
+        />
         <DataTable columns={columns} data={data} theme="dark" />
-      </S.Container>
+      </>
     </SideBar>
   );
 };

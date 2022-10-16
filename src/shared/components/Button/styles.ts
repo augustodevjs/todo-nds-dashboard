@@ -1,8 +1,12 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
-export const Button = styled.button`
+type Props = {
+  transparent: boolean;
+};
+
+export const Button = styled.button<Props>`
   width: 100%;
-  padding: 1rem 1rem;
+  padding: 1rem 1.75rem;
   color: #fff;
   background-color: #00b37e;
   border: none;
@@ -14,4 +18,16 @@ export const Button = styled.button`
   &:hover {
     filter: brightness(1.2);
   }
+
+  ${({ transparent }) =>
+    transparent &&
+    css`
+      background-color: transparent;
+      border: 1px solid #00b37e;
+      transition: background-color 0.3s linear;
+
+      &:hover {
+        background-color: #00b37e;
+      }
+    `}
 `;

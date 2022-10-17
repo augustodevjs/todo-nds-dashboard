@@ -9,7 +9,7 @@ export const Tasks = () => {
         title="Tarefas"
         description="Página de gerenciamento das tarefas"
         icon={MdInbox}
-        action={<Button transparent>Novo</Button>}
+        action={<Button>Novo</Button>}
       />
     </SideBar>
   );

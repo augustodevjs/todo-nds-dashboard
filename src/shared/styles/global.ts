@@ -32,6 +32,42 @@ export const GlobalStyle = createGlobalStyle`
   body, input, textarea, button {
     font: 400 1rem Roboto, sans-serif;
   }
+
+  ::-webkit-scrollbar {
+      width: 12px;
+    }
+
+    ::-webkit-scrollbar-track {
+      box-shadow: inset 0 0 14px 14px transparent;
+      border: solid 4px transparent;
+      border-radius: 0.5rem;
+      background: #202024;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      box-shadow: inset 0 0 10px 10px #323238;
+      border-radius: 6px;
+    }
+
+  .rdt_Pagination {
+    background-color: #29292e;
+    color: #c4c4c6;
+    margin: 0.5rem 0 1rem 0;
+
+    div {
+      background-color: transparent;
+
+      button {
+        svg {
+          fill: #00B37E
+        }
+      }
+    }
+
+    @media(max-width: 1229px) {
+      margin-top: 0;
+    }
+  }
 `;
 
 // white: '#fff',

@@ -26,7 +26,7 @@ export const Aside = styled.aside<Props>`
   left: -30%;
   height: 100vh;
   width: 68px;
-  background-color: #121214;
+  background-color: #18181c;
   transition: 0.5s;
 
   @media screen and (min-width: 768px) {
@@ -68,7 +68,7 @@ export const Nav = styled.nav`
 
     &:hover {
       color: #fff;
-      background-color: #17171a;
+      background-color: #1b1b1e;
     }
   }
 `;
@@ -120,11 +120,11 @@ export const List = styled.div`
     position: relative;
     color: #fff;
     transition: 0.5s;
-    background-color: #17171a;
+    background-color: #1b1b1e;
 
     &:hover {
       color: #fff;
-      background-color: #17171a;
+      background-color: #1b1b1e;
     }
 
     &::before {

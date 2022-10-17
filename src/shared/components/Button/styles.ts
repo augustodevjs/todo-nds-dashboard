@@ -8,7 +8,7 @@ export const Button = styled.button<Props>`
   width: 100%;
   padding: 0.75rem 1.75rem;
   color: #fff;
-  background-color: #00b37e;
+  background-color: #02966a;
   border: none;
   border-radius: 4px;
   cursor: pointer;
@@ -23,11 +23,11 @@ export const Button = styled.button<Props>`
     transparent &&
     css`
       background-color: transparent;
-      border: 1px solid #00b37e;
+      border: 1px solid #02966a;
       transition: background-color 0.3s linear;
 
       &:hover {
-        background-color: #00b37e;
+        background-color: #02966a;
       }
     `}
 `;

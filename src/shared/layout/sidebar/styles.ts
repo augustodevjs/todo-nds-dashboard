@@ -85,7 +85,7 @@ export const Logo = styled.div<Props>`
   }
 
   svg {
-    font-size: 1.5rem;
+    font-size: 1.7rem;
     cursor: pointer;
   }
 
@@ -99,11 +99,11 @@ export const Logo = styled.div<Props>`
 
       img {
         display: block;
-        width: 6rem;
+        width: 7rem;
       }
 
       svg {
-        font-size: 1.5rem;
+        font-size: 2rem;
         cursor: pointer;
       }
     `}

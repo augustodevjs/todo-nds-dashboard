@@ -1,7 +1,10 @@
+import Modal from 'react-modal';
 import { BrowserRouter } from 'react-router-dom';
-import { AppRoutes } from './routes';
 import { AuthProvider } from './shared/contexts';
 import { GlobalStyle } from './shared/styles';
+import { AppRoutes } from './routes';
+
+Modal.setAppElement('#root');
 
 export function App() {
   return (

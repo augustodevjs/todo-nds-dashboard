@@ -20,20 +20,23 @@ export const AuthProvider: React.FC<IAuthProviderProps> = ({ children }) => {
     }
   }, []);
 
-  const login = useCallback(async (email: string, password: string) => {
-    const result = await AuthService(email, password);
+  const login = useCallback(
+    async (email: string, password: string) => {
+      const result = await AuthService(email, password);
 
-    if (result instanceof Error) {
-      return result.message;
-    } else {
-      localStorage.setItem('@todo_nds:user', JSON.stringify(result.user));
-      localStorage.setItem('@todo_nds:accessToken', result.accessToken);
-      api.defaults.headers.common.Authorization = `Bearer ${result.accessToken}`;
-      navigate('/tasks');
-    }
+      if (result instanceof Error) {
+        return result.message;
+      } else {
+        localStorage.setItem('@todo_nds:user', JSON.stringify(result.user));
+        localStorage.setItem('@todo_nds:accessToken', result.accessToken);
+        api.defaults.headers.common.Authorization = `Bearer ${result.accessToken}`;
+        navigate('/tasks');
+      }
 
-    setIsAuthenticated(true);
-  }, []);
+      setIsAuthenticated(true);
+    },
+    [navigate],
+  );
 
   const logout = useCallback(() => {
     localStorage.removeItem('@todo_nds:user');

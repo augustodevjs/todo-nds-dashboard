@@ -125,7 +125,7 @@ export const Lists = () => {
           title="Listas"
           description="Página de gerenciamento das listas"
           icon={MdList}
-          action={<Button>Novo</Button>}
+          action={<Button transparent>Novo</Button>}
         />
 
         <Table columns={columns} data={data} />

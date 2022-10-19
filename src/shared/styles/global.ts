@@ -59,7 +59,7 @@ export const GlobalStyle = createGlobalStyle`
 
       button {
         svg {
-          fill: #00B37E
+          fill: #C4C4CC
         }
       }
     }

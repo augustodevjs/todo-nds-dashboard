@@ -1,11 +1,16 @@
+import { forwardRef, memo } from 'react';
 import { TextInputProps } from '../../domain-types';
 import * as S from './styles';
 
-export const TextInput = ({ label, ...rest }: TextInputProps) => {
-  return (
-    <S.TextInputForm>
-      <label>{label}</label>
-      <input {...rest} />
-    </S.TextInputForm>
-  );
-};
+const TextInputWrapper = forwardRef<HTMLInputElement, TextInputProps>(
+  ({ label, ...rest }, ref) => {
+    return (
+      <S.TextInputForm>
+        <label>{label}</label>
+        <input {...rest} {...rest} ref={ref} />
+      </S.TextInputForm>
+    );
+  },
+);
+
+export const TextInput = memo(TextInputWrapper);

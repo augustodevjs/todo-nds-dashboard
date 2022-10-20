@@ -9,3 +9,14 @@ export interface IAuthContext {
 export interface IAuthProviderProps {
   children: ReactNode;
 }
+
+export interface OpenModalContextProps {
+  newModalOpen: boolean;
+  editModalOpen: boolean;
+  toogleModal: () => void;
+  toogleEditModal: () => void;
+}
+
+export interface OpenModalProviderProps {
+  children: ReactNode;
+}

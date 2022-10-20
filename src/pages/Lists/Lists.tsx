@@ -1,8 +1,15 @@
-import { SideBar } from '../../shared/layout';
-import { TableColumn, createTheme } from 'react-data-table-component';
-import { FaTrash, FaPen } from 'react-icons/fa';
-import { Button, IconButton, PageHeader, Table } from '../../shared/components';
 import { MdList } from 'react-icons/md';
+import { TableColumn } from 'react-data-table-component';
+import { FaTrash, FaPen } from 'react-icons/fa';
+import { SideBar } from '../../shared/layout';
+import {
+  Button,
+  IconButton,
+  Modal,
+  PageHeader,
+  Table,
+} from '../../shared/components';
+import { useModal } from '../../shared/hooks';
 
 type DataRow = {
   nome: string;
@@ -11,6 +18,8 @@ type DataRow = {
 };
 
 export const Lists = () => {
+  const { newModalOpen, toogleModal } = useModal();
+
   const data: DataRow[] = [
     {
       nome: 'João Augusto',
@@ -125,8 +134,10 @@ export const Lists = () => {
           title="Listas"
           description="Página de gerenciamento das listas"
           icon={MdList}
-          action={<Button>Novo</Button>}
+          action={<Button onClick={toogleModal}>Novo</Button>}
         />
+
+        <Modal isOpen={newModalOpen} onRequestClose={toogleModal} />
 
         <Table columns={columns} data={data} />
       </>

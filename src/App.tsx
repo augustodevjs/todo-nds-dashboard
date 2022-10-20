@@ -1,6 +1,6 @@
 import Modal from 'react-modal';
 import { BrowserRouter } from 'react-router-dom';
-import { AuthProvider } from './shared/contexts';
+import { AuthProvider, OpenModalProvider } from './shared/contexts';
 import { GlobalStyle } from './shared/styles';
 import { AppRoutes } from './routes';
 
@@ -10,8 +10,10 @@ export function App() {
   return (
     <BrowserRouter>
       <AuthProvider>
-        <AppRoutes />
-        <GlobalStyle />
+        <OpenModalProvider>
+          <AppRoutes />
+          <GlobalStyle />
+        </OpenModalProvider>
       </AuthProvider>
     </BrowserRouter>
   );

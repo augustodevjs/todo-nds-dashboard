@@ -68,6 +68,29 @@ export const GlobalStyle = createGlobalStyle`
       margin-top: 0;
     }
   }
+
+  .react-modal-overlay {
+    background: rgba(0, 0, 0, 0.5);
+
+    position: fixed;
+    top: 0;
+    bottom:0;
+    right: 0;
+    left: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .react-modal-content {
+    width: 100%;
+    max-width: 700px;
+    background: #202024;
+    padding: 2rem;
+    position: relative;
+    border-radius: 0.25rem;
+  }
 `;
 
 // white: '#fff',

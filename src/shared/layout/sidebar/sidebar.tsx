@@ -17,11 +17,11 @@ export const SideBar: React.FC<SidebarProps> = ({ children }) => {
   return (
     <>
       <S.Container show={!show}>
-        {/* {show && (
-        <S.Header show={!show}>
-          <BiMenu onClick={() => setShow(!show)} />
-        </S.Header>
-      )} */}
+        {show && (
+          <S.Header show={!show}>
+            <BiMenu onClick={() => setShow(!show)} />
+          </S.Header>
+        )}
 
         <S.Aside show={!show}>
           <S.Nav>

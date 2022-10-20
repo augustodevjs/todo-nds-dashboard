@@ -1,8 +1,8 @@
+import { createContext, useCallback, useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { api } from '../api/axios-config';
 import { AuthService } from '../services';
-import { createContext, useCallback, useEffect, useState } from 'react';
 import { IAuthContext, IAuthProviderProps } from '../domain-types';
-import { useNavigate } from 'react-router-dom';
 
 export const AuthContext = createContext<IAuthContext>({} as IAuthContext);
 
@@ -21,7 +21,7 @@ export const AuthProvider: React.FC<IAuthProviderProps> = ({ children }) => {
   }, []);
 
   const login = useCallback(
-    async (email: string, password: string) => {
+    async (email: string | undefined, password: string | undefined) => {
       const result = await AuthService(email, password);
 
       if (result instanceof Error) {

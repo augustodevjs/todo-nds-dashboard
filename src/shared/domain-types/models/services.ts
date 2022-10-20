@@ -1,8 +1,8 @@
 export interface IRegister {
-  name: string;
-  email: string;
-  password: string;
-  passwordConfirm: string;
+  name: string | undefined;
+  email: string | undefined;
+  password: string | undefined;
+  passwordConfirm: string | undefined;
 }
 
 export interface IAuth {

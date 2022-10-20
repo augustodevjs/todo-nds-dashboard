@@ -7,7 +7,7 @@ export const Table: React.FC<TableProps> = ({ columns, data }) => {
       columns={columns}
       data={data}
       pagination
-      paginationPerPage={8}
+      paginationPerPage={10}
       paginationComponentOptions={{
         noRowsPerPage: true,
         rangeSeparatorText: 'de',

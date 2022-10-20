@@ -1,36 +1,32 @@
+import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
+import { yupResolver } from '@hookform/resolvers/yup';
 
-import { Button, TextInput, TsParticle } from '../../shared/components';
-import Logo from '../../shared/assets/logo.svg';
-import * as S from './styles';
-import { FormEvent, useState } from 'react';
 import { AuthCreateUser } from '../../shared/services';
+import { ISignUpForm } from '../../shared/domain-types';
+import { signUpForm } from '../../shared/domain-types/validators';
+import { Button, TextInput, TsParticle } from '../../shared/components';
+
+import * as S from './styles';
+import Logo from '../../shared/assets/logo.svg';
 
 export const SignUp = () => {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [passwordConfirm, setPasswordConfirm] = useState('');
-
   const navigate = useNavigate();
 
-  const handleSubmit = (event: FormEvent) => {
-    event.preventDefault();
+  const { register, handleSubmit } = useForm<ISignUpForm>({
+    mode: 'onBlur',
+    resolver: yupResolver(signUpForm),
+  });
 
-    if (!name || !email || !password || !passwordConfirm) {
-      alert('Preencha todos os campos corretamente!');
-    }
+  const onSubmit = (data: ISignUpForm) => {
+    AuthCreateUser(data).then((result) => {
+      if (result instanceof Error) {
+        return result.message;
+      }
 
-    AuthCreateUser({ name, email, password, passwordConfirm }).then(
-      (result) => {
-        if (result instanceof Error) {
-          return result.message;
-        }
-
-        alert('Usuário cadastrado com sucesso');
-        navigate('/');
-      },
-    );
+      alert('Usuário cadastrado com sucesso!');
+      navigate('/');
+    });
   };
 
   return (
@@ -42,32 +38,31 @@ export const SignUp = () => {
             <img src={Logo} alt="Logo da Aplicação" />
           </S.Logo>
 
-          <S.Form onSubmit={handleSubmit}>
+          <S.Form onSubmit={handleSubmit(onSubmit)}>
             <h2>Nova Conta</h2>
             <TextInput
               type="text"
               label="Nome"
               placeholder="Digite o seu nome"
-              id="name"
-              onChange={(e) => setName(e.target.value)}
+              {...register('name')}
             />
             <TextInput
               type="email"
               label="Email"
               placeholder="Digite o seu email"
-              onChange={(e) => setEmail(e.target.value)}
+              {...register('email')}
             />
             <TextInput
               type="text"
               label="Senha"
               placeholder="Digite a sua senha"
-              onChange={(e) => setPassword(e.target.value)}
+              {...register('password')}
             />
             <TextInput
               type="text"
               label="Confirmação de Senha"
               placeholder="Repita novamente sua senha"
-              onChange={(e) => setPasswordConfirm(e.target.value)}
+              {...register('passwordConfirm')}
             />
             <Button type="submit">Entrar</Button>
           </S.Form>

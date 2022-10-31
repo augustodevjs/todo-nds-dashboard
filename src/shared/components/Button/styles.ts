@@ -2,6 +2,7 @@ import styled, { css } from 'styled-components';
 
 type Props = {
   transparent: boolean;
+  variant?: string;
 };
 
 export const Button = styled.button<Props>`
@@ -30,4 +31,21 @@ export const Button = styled.button<Props>`
         background-color: #02966a;
       }
     `}
+
+  ${(props) => {
+    switch (props.variant) {
+      case 'primary':
+        return `
+            background-color: #02966a
+          `;
+      case 'danger':
+        return `
+          background-color: #dc3545
+          `;
+      case 'info':
+        return `
+          background-color: #ffc10e
+        `;
+    }
+  }}
 `;

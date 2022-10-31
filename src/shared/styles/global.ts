@@ -5,7 +5,7 @@ export const GlobalStyle = createGlobalStyle`
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Roboto';
+
   }
 
   input {
@@ -27,10 +27,11 @@ export const GlobalStyle = createGlobalStyle`
     background-color: #202024;
     color: #E1E1E6;
     -webkit-font-smoothing: antialiased;
+    font-family: 'Roboto', sans-serif;
   }
 
   body, input, textarea, button {
-    font: 400 1rem Roboto, sans-serif;
+    font: 400 1rem;
   }
 
   ::-webkit-scrollbar {
@@ -87,7 +88,7 @@ export const GlobalStyle = createGlobalStyle`
     width: 100%;
     max-width: 700px;
     background: #202024;
-    padding: 2rem;
+    padding: 1.5rem;
     position: relative;
     border-radius: 0.25rem;
   }

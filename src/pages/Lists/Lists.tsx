@@ -1,6 +1,6 @@
 import { MdList } from 'react-icons/md';
 import { TableColumn } from 'react-data-table-component';
-import { FaTrash, FaPen } from 'react-icons/fa';
+import { FaTrash, FaPen, FaPlus } from 'react-icons/fa';
 import { SideBar } from '../../shared/layout';
 import {
   Button,
@@ -10,6 +10,7 @@ import {
   Table,
 } from '../../shared/components';
 import { useModal } from '../../shared/hooks';
+import { ModalProps } from '../../shared/domain-types';
 
 type DataRow = {
   nome: string;
@@ -127,6 +128,16 @@ export const Lists = () => {
     },
   ];
 
+  const submitButton = <Button variant="primary">Salvar</Button>;
+
+  const modalConfigs: ModalProps = {
+    title: 'Cadastrar uma Tarefa',
+    actions: [submitButton],
+    icon: FaPlus,
+    isOpen: newModalOpen,
+    onRequestClose: toogleModal,
+  };
+
   return (
     <SideBar>
       <>
@@ -137,9 +148,9 @@ export const Lists = () => {
           action={<Button onClick={toogleModal}>Novo</Button>}
         />
 
-        <Modal isOpen={newModalOpen} onRequestClose={toogleModal} />
-
         <Table columns={columns} data={data} />
+
+        <Modal {...modalConfigs} />
       </>
     </SideBar>
   );

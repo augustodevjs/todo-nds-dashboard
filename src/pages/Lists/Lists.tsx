@@ -131,10 +131,10 @@ export const Lists = () => {
   const submitButton = <Button variant="primary">Salvar</Button>;
 
   const modalConfigs: ModalProps = {
+    isOpen: newModalOpen,
     title: 'Cadastrar uma Tarefa',
     actions: [submitButton],
     icon: FaPlus,
-    isOpen: newModalOpen,
     onRequestClose: toogleModal,
   };
 
@@ -145,7 +145,11 @@ export const Lists = () => {
           title="Listas"
           description="Página de gerenciamento das listas"
           icon={MdList}
-          action={<Button transparent>Novo</Button>}
+          action={
+            <Button transparent onClick={toogleModal}>
+              Novo
+            </Button>
+          }
         />
 
         <Table columns={columns} data={data} />

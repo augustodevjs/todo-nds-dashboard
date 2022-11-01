@@ -1,19 +1,40 @@
+import ReactModal from 'react-modal';
 import * as S from './styles';
+import { IoMdClose } from 'react-icons/io';
+import { Button } from '../../components';
+import { ModalProps } from '../../domain-types';
 
-type ModalProps = {
-  isOpen: boolean;
-  onRequestClose: () => void;
-};
-
-export const Modal: React.FC<ModalProps> = ({ isOpen, onRequestClose }) => {
+export const Modal: React.FC<ModalProps> = ({
+  isOpen,
+  onRequestClose,
+  icon: Icon,
+  children,
+  title,
+  actions,
+}) => {
   return (
-    <S.Modal
+    <ReactModal
       isOpen={isOpen}
       onRequestClose={onRequestClose}
       overlayClassName="react-modal-overlay"
       className="react-modal-content"
     >
-      <h1>Olá jovem macembo!</h1>
-    </S.Modal>
+      <S.Header>
+        <S.Title>
+          {Icon && <Icon />}
+          {title}
+        </S.Title>
+        <IoMdClose onClick={onRequestClose} />
+      </S.Header>
+
+      {children}
+
+      <S.ButtonGroup>
+        <Button variant="danger" onClick={onRequestClose}>
+          Fechar
+        </Button>
+        {actions?.map((action) => action)}
+      </S.ButtonGroup>
+    </ReactModal>
   );
 };

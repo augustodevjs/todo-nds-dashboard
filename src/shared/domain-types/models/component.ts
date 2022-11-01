@@ -6,6 +6,7 @@ export interface ButtonProps {
   onClick?: () => void;
   children: ReactNode;
   transparent?: boolean;
+  variant?: 'primary' | 'danger' | 'info';
 }
 
 export interface IconButtonProps {
@@ -31,3 +32,12 @@ export interface ParticleProps {
 }
 
 export type TableProps = ReactDataTableProps<any>;
+
+export type ModalProps = {
+  isOpen: boolean;
+  onRequestClose: () => void;
+  icon?: ComponentType;
+  title: string;
+  children?: ReactNode;
+  actions?: ReactNode[];
+};

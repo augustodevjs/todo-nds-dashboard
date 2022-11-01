@@ -6,9 +6,15 @@ export const Button = ({
   onClick,
   type,
   transparent = false,
+  variant,
 }: ButtonProps) => {
   return (
-    <S.Button transparent={transparent} type={type} onClick={onClick}>
+    <S.Button
+      variant={variant}
+      transparent={transparent}
+      type={type}
+      onClick={onClick}
+    >
       {children}
     </S.Button>
   );

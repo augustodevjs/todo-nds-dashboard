@@ -1,7 +1,6 @@
 import ReactModal from 'react-modal';
 import { IoMdClose } from 'react-icons/io';
-import { Button } from '../../components';
-import { ModalProps } from '../../domain-types';
+import { Button, ModalProps } from '../../components';
 import * as S from './styles';
 
 export const Modal: React.FC<ModalProps> = ({

@@ -24,6 +24,7 @@ export interface PageHeaderProps {
 
 export interface TextInputProps extends InputHTMLAttributes<HTMLInputElement> {
   label: string;
+  variant?: string;
 }
 
 export interface ParticleProps {

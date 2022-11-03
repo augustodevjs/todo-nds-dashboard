@@ -1,5 +1,5 @@
 import { api } from '../../api/axios-config';
-import { IRegister } from '../../domain-types';
+import { IRegister } from '../types';
 
 export const AuthCreateUser = async (
   data: IRegister,

@@ -1,5 +1,5 @@
 import { api } from '../../api/axios-config';
-import { IAuth } from '../../domain-types';
+import { IAuth } from '../types';
 
 export const AuthService = async (
   email: string | undefined,

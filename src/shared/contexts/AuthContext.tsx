@@ -2,7 +2,7 @@ import { createContext, useCallback, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { api } from '../api/axios-config';
 import { AuthService } from '../services';
-import { IAuthContext, IAuthProviderProps } from '../domain-types';
+import { IAuthContext, IAuthProviderProps } from './types';
 
 export const AuthContext = createContext<IAuthContext>({} as IAuthContext);
 

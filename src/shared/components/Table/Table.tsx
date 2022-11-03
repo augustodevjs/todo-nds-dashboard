@@ -1,4 +1,4 @@
-import { TableProps } from '../../domain-types';
+import { TableProps } from '../types';
 import * as S from './styles';
 
 export const Table: React.FC<TableProps> = ({ columns, data }) => {

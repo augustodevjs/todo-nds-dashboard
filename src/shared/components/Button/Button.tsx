@@ -1,4 +1,4 @@
-import { ButtonProps } from '../../domain-types';
+import { ButtonProps } from '../types';
 import * as S from './styles';
 
 export const Button = ({

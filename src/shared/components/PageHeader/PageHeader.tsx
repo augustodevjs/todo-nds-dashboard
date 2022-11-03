@@ -1,4 +1,4 @@
-import { PageHeaderProps } from '../../domain-types';
+import { PageHeaderProps } from '../types';
 import * as S from './styles';
 
 export const PageHeader: React.FC<PageHeaderProps> = ({

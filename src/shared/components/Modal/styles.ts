@@ -33,7 +33,7 @@ export const ButtonGroup = styled.div`
   align-items: center;
   justify-content: flex-end;
   gap: 0.5rem;
-  margin-top: 3rem;
+  margin-top: 2rem;
 
   button {
     width: 100px;

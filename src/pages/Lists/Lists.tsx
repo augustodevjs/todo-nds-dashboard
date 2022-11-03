@@ -6,20 +6,24 @@ import {
   Button,
   IconButton,
   Modal,
+  ModalProps,
   PageHeader,
   Table,
   TextInput,
 } from '../../shared/components';
 import { useModal } from '../../shared/hooks';
-import { ModalProps } from '../../shared/domain-types';
+import { FormProvider, useForm } from 'react-hook-form';
+import { ListFormInput } from '../../shared/domain-types';
 
 type DataRow = {
   nome: string;
   descricacao: string;
-  data: string;
 };
 
 export const Lists = () => {
+  const form = useForm<ListFormInput>({
+    mode: 'onChange',
+  });
   const { newModalOpen, toogleModal } = useModal();
 
   const data: DataRow[] = [
@@ -27,68 +31,57 @@ export const Lists = () => {
       nome: 'João Augusto',
       descricacao:
         'Realizar a primeira task da sprint 1 e fazer refatoração do código',
-      data: '20/20/2022',
     },
     {
       nome: 'João Augusto',
       descricacao:
         'Realizar a primeira task da sprint 1 e fazer refatoração do código',
-      data: '20/20/2022',
     },
     {
       nome: 'João Augusto',
       descricacao:
         'Realizar a primeira task da sprint 1 e fazer refatoração do código',
-      data: '20/20/2022',
     },
     {
       nome: 'João Augusto',
       descricacao:
         'Realizar a primeira task da sprint 1 e fazer refatoração do código',
-      data: '20/20/2022',
     },
     {
       nome: 'João Augusto',
       descricacao:
         'Realizar a primeira task da sprint 1 e fazer refatoração do código ',
-      data: '20/20/2022',
     },
     {
       nome: 'João Augusto',
       descricacao:
         'Realizar a primeira task da sprint 1 e fazer refatoração do código ',
-      data: '20/20/2022',
     },
     {
       nome: 'João Augusto',
       descricacao:
         'Realizar a primeira task da sprint 1 e fazer refatoração do código ',
-      data: '20/20/2022',
     },
     {
       nome: 'Rafaela',
       descricacao:
         'Realizar a primeira task da sprint 1 e fazer refatoração do código ',
-      data: '20/20/2022',
     },
     {
       nome: 'Biejam',
       descricacao:
         'Realizar a primeira task da sprint 1 e fazer refatoração do código ',
-      data: '20/20/2022',
     },
 
     {
       nome: 'Pedro',
       descricacao:
         'Realizar a primeira task da sprint 1 e fazer refatoração do código ',
-      data: '20/20/2022',
     },
     {
       nome: 'Eliza',
       descricacao:
         'Realizar a primeira task da sprint 1 e fazer refatoração do código ',
-      data: '20/20/2022',
     },
   ];
 
@@ -98,11 +91,6 @@ export const Lists = () => {
       selector: (row) => row.nome,
       center: true,
       sortable: true,
-    },
-    {
-      name: 'Data',
-      selector: (row) => row.data,
-      center: true,
     },
     {
       name: 'Descrição',
@@ -133,7 +121,7 @@ export const Lists = () => {
 
   const modalConfigs: ModalProps = {
     isOpen: newModalOpen,
-    title: 'Cadastrar uma Tarefa',
+    title: 'Cadastrar da Lista',
     actions: [submitButton],
     icon: FaPlus,
     onRequestClose: toogleModal,
@@ -155,9 +143,9 @@ export const Lists = () => {
 
         <Table columns={columns} data={data} />
 
-        <Modal {...modalConfigs}>
-          <TextInput label="Nome" placeholder="Digite o nome da lista" />
-        </Modal>
+        <FormProvider {...form}>
+          <Modal {...modalConfigs}></Modal>
+        </FormProvider>
       </>
     </SideBar>
   );

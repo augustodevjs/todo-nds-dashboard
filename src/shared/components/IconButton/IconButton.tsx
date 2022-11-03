@@ -1,4 +1,4 @@
-import { IconButtonProps } from '../../domain-types';
+import { IconButtonProps } from '../types';
 import * as S from './styles';
 
 export const IconButton: React.FC<IconButtonProps> = ({

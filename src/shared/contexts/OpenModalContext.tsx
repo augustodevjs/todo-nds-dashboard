@@ -1,5 +1,5 @@
 import { createContext, useState } from 'react';
-import { OpenModalContextProps, OpenModalProviderProps } from '../domain-types';
+import { OpenModalContextProps, OpenModalProviderProps } from './types';
 
 export const OpenModalContext = createContext<OpenModalContextProps>(
   {} as OpenModalContextProps,

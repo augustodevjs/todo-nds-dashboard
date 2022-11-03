@@ -20,6 +20,7 @@ export const TextInputForm = styled.div`
 
     ::placeholder {
       color: #7c7c8a;
+      font-size: 0.95rem;
     }
   }
 `;

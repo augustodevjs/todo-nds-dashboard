@@ -8,6 +8,7 @@ import {
   Modal,
   PageHeader,
   Table,
+  TextInput,
 } from '../../shared/components';
 import { useModal } from '../../shared/hooks';
 import { ModalProps } from '../../shared/domain-types';
@@ -150,7 +151,9 @@ export const Lists = () => {
 
         <Table columns={columns} data={data} />
 
-        <Modal {...modalConfigs} />
+        <Modal {...modalConfigs}>
+          <TextInput label="Nome" placeholder="Digite o nome da lista" />
+        </Modal>
       </>
     </SideBar>
   );

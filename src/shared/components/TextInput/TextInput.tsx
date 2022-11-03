@@ -7,7 +7,7 @@ const TextInputWrapper = forwardRef<HTMLInputElement, TextInputProps>(
     return (
       <S.TextInputForm>
         <label>{label}</label>
-        <input {...rest} {...rest} ref={ref} />
+        <input {...rest} ref={ref} />
       </S.TextInputForm>
     );
   },

@@ -23,7 +23,7 @@ export const Title = styled.div`
   align-items: center;
   justify-content: center;
   gap: 0.75rem;
-  font-size: 1.25rem;
+  font-size: 1.35rem;
   font-weight: 600;
 `;
 
@@ -33,7 +33,7 @@ export const ButtonGroup = styled.div`
   align-items: center;
   justify-content: flex-end;
   gap: 0.5rem;
-  margin-top: 2rem;
+  margin-top: 1.5rem;
 
   button {
     width: 100px;

@@ -1,10 +1,12 @@
-import { ComponentType, InputHTMLAttributes, ReactNode } from 'react';
+import {
+  ButtonHTMLAttributes,
+  ComponentType,
+  InputHTMLAttributes,
+  ReactNode,
+} from 'react';
 import { TableProps as ReactDataTableProps } from 'react-data-table-component';
 
-export interface ButtonProps {
-  type?: 'button' | 'reset' | 'submit';
-  onClick?: () => void;
-  children: ReactNode;
+export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   transparent?: boolean;
   variant?: 'primary' | 'danger' | 'info';
 }

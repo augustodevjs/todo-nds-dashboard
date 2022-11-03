@@ -5,4 +5,5 @@ export * from './TextInput/TextInput';
 export * from './TsParticle/TsParticle';
 export * from './PageHeader/PageHeader';
 export * from './IconButton/IconButton';
+export * from './TextAreaInput/TextAreaInput';
 export * from './types';

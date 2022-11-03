@@ -7,7 +7,7 @@ export const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
   }
 
-  input {
+  input, textarea {
     :focus {
       outline: 0;
       box-shadow: 0 0 0 2px #015F43;
@@ -87,7 +87,7 @@ export const GlobalStyle = createGlobalStyle`
     width: 100%;
     max-width: 700px;
     background: #121214;
-    padding: 1.5rem;
+    padding: 1.75rem;
     position: relative;
     border-radius: 0.25rem;
   }

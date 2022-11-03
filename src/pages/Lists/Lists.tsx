@@ -1,19 +1,12 @@
 import { MdList } from 'react-icons/md';
+import { useForm } from 'react-hook-form';
+import { FaTrash, FaPen } from 'react-icons/fa';
 import { TableColumn } from 'react-data-table-component';
-import { FaTrash, FaPen, FaPlus } from 'react-icons/fa';
 import { SideBar } from '../../shared/layout';
-import {
-  Button,
-  IconButton,
-  Modal,
-  ModalProps,
-  PageHeader,
-  Table,
-  TextInput,
-} from '../../shared/components';
+import { Button, IconButton, PageHeader, Table } from '../../shared/components';
 import { useModal } from '../../shared/hooks';
-import { FormProvider, useForm } from 'react-hook-form';
 import { ListFormInput } from '../../shared/domain-types';
+import { AddListModal } from './components';
 
 type DataRow = {
   nome: string;
@@ -21,9 +14,6 @@ type DataRow = {
 };
 
 export const Lists = () => {
-  const form = useForm<ListFormInput>({
-    mode: 'onChange',
-  });
   const { newModalOpen, toogleModal } = useModal();
 
   const data: DataRow[] = [
@@ -117,16 +107,6 @@ export const Lists = () => {
     },
   ];
 
-  const submitButton = <Button variant="primary">Salvar</Button>;
-
-  const modalConfigs: ModalProps = {
-    isOpen: newModalOpen,
-    title: 'Cadastrar da Lista',
-    actions: [submitButton],
-    icon: FaPlus,
-    onRequestClose: toogleModal,
-  };
-
   return (
     <SideBar>
       <>
@@ -143,9 +123,7 @@ export const Lists = () => {
 
         <Table columns={columns} data={data} />
 
-        <FormProvider {...form}>
-          <Modal {...modalConfigs}></Modal>
-        </FormProvider>
+        <AddListModal isOpen={newModalOpen} onRequestClose={toogleModal} />
       </>
     </SideBar>
   );

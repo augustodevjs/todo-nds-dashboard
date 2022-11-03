@@ -1,8 +1,8 @@
-import { forwardRef, memo } from 'react';
+import { forwardRef } from 'react';
 import { TextInputProps } from '../../domain-types';
 import * as S from './styles';
 
-const TextInputWrapper = forwardRef<HTMLInputElement, TextInputProps>(
+export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
   ({ label, ...rest }, ref) => {
     return (
       <S.TextInputForm>
@@ -12,5 +12,3 @@ const TextInputWrapper = forwardRef<HTMLInputElement, TextInputProps>(
     );
   },
 );
-
-export const TextInput = memo(TextInputWrapper);

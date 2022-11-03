@@ -1,8 +1,8 @@
 import ReactModal from 'react-modal';
-import * as S from './styles';
 import { IoMdClose } from 'react-icons/io';
 import { Button } from '../../components';
 import { ModalProps } from '../../domain-types';
+import * as S from './styles';
 
 export const Modal: React.FC<ModalProps> = ({
   isOpen,

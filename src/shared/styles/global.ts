@@ -5,7 +5,6 @@ export const GlobalStyle = createGlobalStyle`
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-
   }
 
   input {
@@ -60,7 +59,7 @@ export const GlobalStyle = createGlobalStyle`
 
       button {
         svg {
-          fill: #c4c4c6
+          fill: #C4C4CC
         }
       }
     }

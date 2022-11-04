@@ -10,6 +10,7 @@ import { TableProps as ReactDataTableProps } from 'react-data-table-component';
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   transparent?: boolean;
   variant?: 'primary' | 'danger' | 'info';
+  disabled?: boolean;
 }
 
 export interface IconButtonProps {

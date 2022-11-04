@@ -12,3 +12,11 @@ export interface IAuth {
     email: string;
   };
 }
+
+export interface IList {
+  name: string;
+}
+
+export interface IListItens {
+  data: IList[];
+}

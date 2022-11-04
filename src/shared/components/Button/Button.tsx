@@ -7,9 +7,11 @@ export const Button = ({
   type,
   transparent = false,
   variant,
+  disabled,
 }: ButtonProps) => {
   return (
     <S.Button
+      disabled={disabled}
       variant={variant}
       transparent={transparent}
       type={type}

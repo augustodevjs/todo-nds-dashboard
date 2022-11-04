@@ -6,98 +6,42 @@ import { SideBar } from '../../shared/layout';
 import { useModal } from '../../shared/hooks';
 import { Button, IconButton, PageHeader, Table } from '../../shared/components';
 import { AddListModal, EditListModal, RemoveListModal } from './components';
-
-type DataRow = {
-  nome: string;
-  descricacao: string;
-};
+import { IList } from '../../shared/services';
 
 export const Lists = () => {
-  const [selectedList, setSelectedList] = useState<DataRow>();
+  const [selectedList, setSelectedList] = useState<IList>();
   const [isAddModalOpen, openAddModal, closeAddModal] = useModal();
   const [isEditModalOpen, openEditModal, closeEditModal] = useModal();
   const [isRemoveModalOpen, openRemoveModal, closeRemoveModal] = useModal();
 
-  const handleRemove = (list: DataRow) => {
+  const handleRemove = (list: IList) => {
     setSelectedList(list);
     openRemoveModal();
   };
 
-  const handleEdit = (list: DataRow) => {
+  const handleEdit = (list: IList) => {
     setSelectedList(list);
     openEditModal();
   };
 
-  const data: DataRow[] = [
+  const data: IList[] = [
     {
-      nome: 'João Augusto',
-      descricacao:
-        'Realizar a primeira task da sprint 1 e fazer refatoração do código',
+      name: 'João Augusto',
     },
     {
-      nome: 'João Augusto',
-      descricacao:
-        'Realizar a primeira task da sprint 1 e fazer refatoração do código',
+      name: 'Rafaela',
     },
     {
-      nome: 'João Augusto',
-      descricacao:
-        'Realizar a primeira task da sprint 1 e fazer refatoração do código',
-    },
-    {
-      nome: 'João Augusto',
-      descricacao:
-        'Realizar a primeira task da sprint 1 e fazer refatoração do código',
-    },
-    {
-      nome: 'João Augusto',
-      descricacao:
-        'Realizar a primeira task da sprint 1 e fazer refatoração do código ',
-    },
-    {
-      nome: 'João Augusto',
-      descricacao:
-        'Realizar a primeira task da sprint 1 e fazer refatoração do código ',
-    },
-    {
-      nome: 'João Augusto',
-      descricacao:
-        'Realizar a primeira task da sprint 1 e fazer refatoração do código ',
-    },
-    {
-      nome: 'Rafaela',
-      descricacao:
-        'Realizar a primeira task da sprint 1 e fazer refatoração do código ',
-    },
-    {
-      nome: 'Biejam',
-      descricacao:
-        'Realizar a primeira task da sprint 1 e fazer refatoração do código ',
-    },
-
-    {
-      nome: 'Pedro',
-      descricacao:
-        'Realizar a primeira task da sprint 1 e fazer refatoração do código ',
-    },
-    {
-      nome: 'Eliza',
-      descricacao:
-        'Realizar a primeira task da sprint 1 e fazer refatoração do código ',
+      name: 'Eliza',
     },
   ];
 
-  const columns: TableColumn<DataRow>[] = [
+  const columns: TableColumn<IList>[] = [
     {
-      name: 'Nome',
-      selector: (list) => list.nome,
+      name: 'name',
+      selector: (list) => list.name,
       center: true,
       sortable: true,
-    },
-    {
-      name: 'Descrição',
-      selector: (list) => list.descricacao,
-      center: true,
     },
     {
       name: 'Ações',
@@ -143,7 +87,7 @@ export const Lists = () => {
         />
 
         <RemoveListModal
-          name={selectedList?.nome}
+          name={selectedList?.name}
           isOpen={isRemoveModalOpen}
           onRequestClose={closeRemoveModal}
         />

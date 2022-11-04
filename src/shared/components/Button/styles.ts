@@ -3,22 +3,40 @@ import styled, { css } from 'styled-components';
 type Props = {
   transparent: boolean;
   variant?: string;
+  disabled?: boolean;
 };
 
 export const Button = styled.button<Props>`
   width: 100%;
   padding: 0.75rem 1.75rem;
   color: #fff;
-  background-color: #02966a;
   border: none;
   border-radius: 4px;
-  cursor: pointer;
   font-size: 14px;
   font-weight: 700;
-  transition: filter 0.3s linear;
-  &:hover {
-    filter: brightness(1.2);
-  }
+
+  ${({ disabled }) =>
+    disabled &&
+    css`
+      background-color: #047453;
+      cursor: not-allowed;
+
+      &:hover {
+        background-color: none;
+      }
+    `}
+
+  ${({ disabled }) =>
+    !disabled &&
+    css`
+      background-color: #02966a;
+      cursor: pointer;
+      transition: filter 0.3s linear;
+
+      &:hover {
+        filter: brightness(1.2);
+      }
+    `}
 
   ${({ transparent }) =>
     transparent &&

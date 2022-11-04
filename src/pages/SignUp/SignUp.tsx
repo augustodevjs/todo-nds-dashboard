@@ -13,8 +13,8 @@ import Logo from '../../shared/assets/logo.svg';
 export const SignUp = () => {
   const navigate = useNavigate();
 
-  const { register, handleSubmit } = useForm<ISignUpForm>({
-    mode: 'onBlur',
+  const { register, handleSubmit, formState } = useForm<ISignUpForm>({
+    mode: 'onChange',
     resolver: yupResolver(signUpForm),
   });
 
@@ -64,7 +64,9 @@ export const SignUp = () => {
               placeholder="Repita novamente sua senha"
               {...register('passwordConfirm')}
             />
-            <Button type="submit">Entrar</Button>
+            <Button type="submit" disabled={!formState.isValid}>
+              Entrar
+            </Button>
           </S.Form>
 
           <Link to="/">Já possui uma conta?</Link>

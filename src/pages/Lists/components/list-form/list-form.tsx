@@ -3,7 +3,7 @@ import { TextAreaInput, TextInput } from '../../../../shared/components';
 import { ListFormInput } from '../../../../shared/domain-types';
 import * as S from './styles';
 
-export const ListForm: React.FC = ({}) => {
+export const ListForm: React.FC = () => {
   const { register } = useFormContext<ListFormInput>();
 
   return (

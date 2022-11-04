@@ -13,8 +13,8 @@ import * as S from './styles';
 export const SignIn = () => {
   const { login } = useAuth();
 
-  const { register, handleSubmit } = useForm<ISignInForm>({
-    mode: 'onBlur',
+  const { register, handleSubmit, formState } = useForm<ISignInForm>({
+    mode: 'onChange',
     resolver: yupResolver(signInForm),
   });
 
@@ -44,7 +44,9 @@ export const SignIn = () => {
               placeholder="Digite a sua senha"
               {...register('password')}
             />
-            <Button>Entrar</Button>
+            <Button type="submit" disabled={!formState.isValid}>
+              Entrar
+            </Button>
           </S.Form>
 
           <Link to="/register">Não possui uma conta?</Link>

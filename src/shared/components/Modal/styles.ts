@@ -59,6 +59,7 @@ export const ButtonGroup = styled.div`
   margin-top: 1.5rem;
 
   button {
-    width: 120px;
+    max-width: 100%;
+    width: 100px;
   }
 `;

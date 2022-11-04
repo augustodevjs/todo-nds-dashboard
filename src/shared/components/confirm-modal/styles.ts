@@ -16,7 +16,7 @@ export const Modal = styled(ReactModal)<Props>`
   ${(props) => {
     switch (props.size) {
       case 'sm':
-        return `max-width: 480px`;
+        return `max-width: 500px`;
       case 'lg':
         return `max-width: 700px`;
     }
@@ -60,6 +60,10 @@ export const ButtonGroup = styled.div`
   margin-top: 2rem;
 
   button {
-    width: 120px;
+    width: 100px;
+
+    :last-child {
+      width: 120px;
+    }
   }
 `;

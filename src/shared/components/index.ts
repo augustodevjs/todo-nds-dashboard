@@ -7,3 +7,4 @@ export * from './PageHeader/PageHeader';
 export * from './IconButton/IconButton';
 export * from './TextAreaInput/TextAreaInput';
 export * from './types';
+export * from './confirm-modal/confirm-modal';

@@ -1,4 +1,27 @@
 import styled from 'styled-components';
+import ReactModal from 'react-modal';
+
+type Props = {
+  size: string;
+};
+
+export const Modal = styled(ReactModal)<Props>`
+  width: 100%;
+  background: #121214;
+  padding: 1.75rem;
+  position: relative;
+  border-radius: 0.25rem;
+  max-width: 700px;
+
+  ${(props) => {
+    switch (props.size) {
+      case 'sm':
+        return `max-width: 450px`;
+      case 'lg':
+        return `max-width: 700px`;
+    }
+  }}
+`;
 
 export const Header = styled.header`
   display: flex;
@@ -36,6 +59,6 @@ export const ButtonGroup = styled.div`
   margin-top: 1.5rem;
 
   button {
-    width: 100px;
+    width: 120px;
   }
 `;

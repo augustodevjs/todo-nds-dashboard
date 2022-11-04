@@ -82,15 +82,6 @@ export const GlobalStyle = createGlobalStyle`
     align-items: center;
     justify-content: center;
   }
-
-  .react-modal-content {
-    width: 100%;
-    max-width: 700px;
-    background: #121214;
-    padding: 1.75rem;
-    position: relative;
-    border-radius: 0.25rem;
-  }
 `;
 
 // white: '#fff',

@@ -1,12 +1,11 @@
+import { useState } from 'react';
 import { MdList } from 'react-icons/md';
-import { useForm } from 'react-hook-form';
 import { FaTrash, FaPen } from 'react-icons/fa';
 import { TableColumn } from 'react-data-table-component';
 import { SideBar } from '../../shared/layout';
-import { Button, IconButton, PageHeader, Table } from '../../shared/components';
 import { useModal } from '../../shared/hooks';
-import { ListFormInput } from '../../shared/domain-types';
-import { AddListModal } from './components';
+import { AddListModal, RemoveListModal } from './components';
+import { Button, IconButton, PageHeader, Table } from '../../shared/components';
 
 type DataRow = {
   nome: string;
@@ -14,7 +13,15 @@ type DataRow = {
 };
 
 export const Lists = () => {
-  const { newModalOpen, toogleModal } = useModal();
+  const [selectedList, setSelectedList] = useState<DataRow>();
+  const [isAddModalOpen, openAddModal, closeAddModal] = useModal();
+  const [isEditModalOpen, openEditModal, closeEditModal] = useModal();
+  const [isRemoveModalOpen, openRemoveModal, closeRemoveModal] = useModal();
+
+  const handleRemove = (list: DataRow) => {
+    setSelectedList(list);
+    openRemoveModal();
+  };
 
   const data: DataRow[] = [
     {
@@ -94,12 +101,12 @@ export const Lists = () => {
           <IconButton
             icon={FaPen}
             variant="edit"
-            onClick={() => alert('Editar')}
+            onClick={() => console.log('oi')}
           />
           <IconButton
             variant="remove"
             icon={FaTrash}
-            onClick={() => alert('Remover')}
+            onClick={() => handleRemove(row)}
           />
         </>
       ),
@@ -115,7 +122,7 @@ export const Lists = () => {
           description="Página de gerenciamento das listas"
           icon={MdList}
           action={
-            <Button transparent onClick={toogleModal}>
+            <Button transparent onClick={openAddModal}>
               Novo
             </Button>
           }
@@ -123,7 +130,13 @@ export const Lists = () => {
 
         <Table columns={columns} data={data} />
 
-        <AddListModal isOpen={newModalOpen} onRequestClose={toogleModal} />
+        <AddListModal isOpen={isAddModalOpen} onRequestClose={closeAddModal} />
+
+        <RemoveListModal
+          name={selectedList?.nome}
+          isOpen={isRemoveModalOpen}
+          onRequestClose={closeRemoveModal}
+        />
       </>
     </SideBar>
   );

@@ -37,10 +37,19 @@ export interface ParticleProps {
 export type TableProps = ReactDataTableProps<any>;
 
 export type ModalProps = {
-  isOpen: boolean;
-  onRequestClose: () => void;
+  isOpen?: boolean;
+  onRequestClose?: () => void;
   icon?: ComponentType;
-  title: string;
+  title?: string;
   children?: ReactNode;
   actions?: ReactNode[];
+  size?: 'sm' | 'lg';
+};
+
+export type ConfirmModalProps = Omit<
+  ModalProps,
+  'actions' | 'size' | 'children'
+> & {
+  message: string;
+  onConfirm: () => void;
 };

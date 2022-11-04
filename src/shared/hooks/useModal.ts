@@ -1,7 +1,17 @@
-import { useContext } from 'react';
-import { OpenModalContext } from '../contexts';
+import { useState } from 'react';
 
-export const useModal = () => {
-  const context = useContext(OpenModalContext);
-  return context;
+type Output = [boolean, () => void, () => void];
+
+export const useModal = (): Output => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const openModal = () => {
+    setIsOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsOpen(false);
+  };
+
+  return [isOpen, openModal, closeModal];
 };

@@ -1,25 +1,28 @@
 import { FaPlus } from 'react-icons/fa';
-import { ListForm } from '../list-form/list-form';
 import { Button, Modal, ModalProps } from '../../../../shared/components';
 import { FormProvider, SubmitHandler, useForm } from 'react-hook-form';
 import { ListFormInput } from '../../../../shared/domain-types';
+import { ListForm } from '../list-form/list-form';
 
 type Props = Pick<ModalProps, 'isOpen' | 'onRequestClose'>;
 
 export const AddListModal: React.FC<Props> = ({ isOpen, onRequestClose }) => {
-  const form = useForm<ListFormInput>();
-
-  const onSubmit: SubmitHandler<ListFormInput> = (data) => console.log(data);
+  const form = useForm<ListFormInput>({
+    mode: 'onChange',
+  });
 
   const submitButton = (
-    <>
-      <Button id="add-list" variant="primary">
-        Salvar
-      </Button>
-    </>
+    <Button type="submit" form="add" variant="primary">
+      Salvar
+    </Button>
   );
 
+  const onSubmit: SubmitHandler<ListFormInput> = (data) => {
+    console.log('oi');
+  };
+
   const modalConfigs: ModalProps = {
+    size: 'lg',
     isOpen,
     icon: FaPlus,
     onRequestClose,
@@ -30,7 +33,9 @@ export const AddListModal: React.FC<Props> = ({ isOpen, onRequestClose }) => {
   return (
     <Modal {...modalConfigs}>
       <FormProvider {...form}>
-        <ListForm id="add-list" onSubmit={onSubmit} />
+        <form onSubmit={form.handleSubmit(onSubmit)}>
+          <ListForm />
+        </form>
       </FormProvider>
     </Modal>
   );

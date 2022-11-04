@@ -1,4 +1,3 @@
-import ReactModal from 'react-modal';
 import { IoMdClose } from 'react-icons/io';
 import { Button, ModalProps } from '../../components';
 import * as S from './styles';
@@ -10,10 +9,12 @@ export const Modal: React.FC<ModalProps> = ({
   children,
   title,
   actions,
+  size,
 }) => {
   return (
-    <ReactModal
-      isOpen={isOpen}
+    <S.Modal
+      size={size ?? ''}
+      isOpen={isOpen ?? false}
       onRequestClose={onRequestClose}
       overlayClassName="react-modal-overlay"
       className="react-modal-content"
@@ -34,6 +35,6 @@ export const Modal: React.FC<ModalProps> = ({
         </Button>
         {actions?.map((action) => action)}
       </S.ButtonGroup>
-    </ReactModal>
+    </S.Modal>
   );
 };

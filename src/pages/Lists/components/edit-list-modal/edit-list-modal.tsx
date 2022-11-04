@@ -1,4 +1,4 @@
-import { FaPlus } from 'react-icons/fa';
+import { FaPen } from 'react-icons/fa';
 import { Button, Modal, ModalProps } from '../../../../shared/components';
 import { FormProvider, SubmitHandler, useForm } from 'react-hook-form';
 import { ListFormInput } from '../../../../shared/domain-types';
@@ -6,7 +6,7 @@ import { ListForm } from '../list-form/list-form';
 
 type Props = Pick<ModalProps, 'isOpen' | 'onRequestClose'>;
 
-export const AddListModal: React.FC<Props> = ({ isOpen, onRequestClose }) => {
+export const EditListModal: React.FC<Props> = ({ isOpen, onRequestClose }) => {
   const form = useForm<ListFormInput>({
     mode: 'onChange',
   });
@@ -24,9 +24,9 @@ export const AddListModal: React.FC<Props> = ({ isOpen, onRequestClose }) => {
   const modalConfigs: ModalProps = {
     size: 'lg',
     isOpen,
-    icon: FaPlus,
+    icon: FaPen,
     onRequestClose,
-    title: 'Cadastro de Lista',
+    title: 'Edição de Lista',
     actions: [submitButton],
   };
 

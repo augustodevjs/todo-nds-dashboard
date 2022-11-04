@@ -9,6 +9,7 @@ export const ListForm: React.FC = ({}) => {
   return (
     <S.Container>
       <TextInput
+        isRequired
         variant="gray"
         label="Nome"
         placeholder="Digite o nome da lista"
@@ -18,6 +19,7 @@ export const ListForm: React.FC = ({}) => {
       <TextAreaInput
         label="Descrição"
         rows={4}
+        isRequired
         placeholder="Escreva uma breve descrição sobre a lista"
         {...register('description')}
       />

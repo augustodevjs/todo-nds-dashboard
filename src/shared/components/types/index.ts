@@ -3,6 +3,7 @@ import {
   ComponentType,
   InputHTMLAttributes,
   ReactNode,
+  TextareaHTMLAttributes,
 } from 'react';
 import { TableProps as ReactDataTableProps } from 'react-data-table-component';
 
@@ -27,6 +28,7 @@ export interface PageHeaderProps {
 export interface TextInputProps extends InputHTMLAttributes<HTMLInputElement> {
   label: string;
   variant?: string;
+  isRequired?: boolean;
 }
 
 export interface ParticleProps {
@@ -46,10 +48,13 @@ export type ModalProps = {
   size?: 'sm' | 'lg';
 };
 
-export type ConfirmModalProps = Omit<
-  ModalProps,
-  'actions' | 'size' | 'children'
-> & {
-  message: string;
+export interface ConfirmModalProps extends ModalProps {
   onConfirm: () => void;
-};
+  message?: string;
+}
+
+export interface TextAreaInputProps
+  extends TextareaHTMLAttributes<HTMLTextAreaElement> {
+  label: string;
+  isRequired?: boolean;
+}

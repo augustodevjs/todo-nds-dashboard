@@ -8,9 +8,10 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   input, textarea {
+    transition: box-shadow 0.3s;
     :focus {
       outline: 0;
-      box-shadow: 0 0 0 2px #015F43;
+      box-shadow: 0 0 2px 2px #015F43;
     }
   }
 

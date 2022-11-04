@@ -1,5 +1,6 @@
 import { FaTrash } from 'react-icons/fa';
 import {
+  Button,
   ConfirmModal,
   ConfirmModalProps,
   ModalProps,
@@ -14,15 +15,21 @@ export const RemoveListModal: React.FC<Props> = ({
   onRequestClose,
   name,
 }) => {
-  const onConfirm = () => console.log('oi');
+  const submitButton = (
+    <Button type="submit" form="add" variant="primary">
+      Confirmar
+    </Button>
+  );
 
   const modalConfigs: ConfirmModalProps = {
     isOpen,
     onRequestClose,
-    title: 'Remoção da Lista',
+    title: 'Remoção de Lista',
     icon: FaTrash,
+    size: 'sm',
     message: `Tem certeza de que deseja excluir a lista ${name}?`,
-    onConfirm,
+    onConfirm: () => console.log('oi'),
+    actions: [submitButton],
   };
 
   return <ConfirmModal {...modalConfigs} />;

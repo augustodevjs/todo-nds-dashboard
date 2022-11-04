@@ -7,7 +7,7 @@ type Props = {
 
 export const Modal = styled(ReactModal)<Props>`
   width: 100%;
-  background: #121214;
+  background: #202024;
   padding: 1.75rem;
   position: relative;
   border-radius: 0.25rem;

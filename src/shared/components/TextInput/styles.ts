@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 type Props = {
   variant?: string;
+  isRequired?: boolean;
 };
 
 export const TextInputForm = styled.div<Props>`
@@ -13,6 +14,18 @@ export const TextInputForm = styled.div<Props>`
     & + input {
       margin-bottom: 1rem;
     }
+
+    ${(props) => {
+      if (props.isRequired) {
+        return `
+          &:after {
+            content: '*';
+            color: #F75A68;
+            margin-left: 6px;
+          }
+        `;
+      }
+    }}
   }
 
   input {
@@ -33,7 +46,7 @@ export const TextInputForm = styled.div<Props>`
       switch (props.variant) {
         case 'gray':
           return `
-          background-color: #202024
+          background-color: #29292E
         `;
       }
     }}

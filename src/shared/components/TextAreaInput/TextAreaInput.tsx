@@ -1,17 +1,13 @@
-import { forwardRef, TextareaHTMLAttributes } from 'react';
+import { forwardRef } from 'react';
+import { TextAreaInputProps } from '../types';
 import * as S from './styles';
-
-interface TextAreaInputProps
-  extends TextareaHTMLAttributes<HTMLTextAreaElement> {
-  label: string;
-}
 
 export const TextAreaInput = forwardRef<
   HTMLTextAreaElement,
   TextAreaInputProps
->(({ label, ...rest }, ref) => {
+>(({ label, isRequired, ...rest }, ref) => {
   return (
-    <S.TextAreaInputForm>
+    <S.TextAreaInputForm isRequired={isRequired}>
       <label>{label}</label>
       <textarea rows={4} {...rest} ref={ref} />
     </S.TextAreaInputForm>

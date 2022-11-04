@@ -4,8 +4,8 @@ import { FaTrash, FaPen } from 'react-icons/fa';
 import { TableColumn } from 'react-data-table-component';
 import { SideBar } from '../../shared/layout';
 import { useModal } from '../../shared/hooks';
-import { AddListModal, RemoveListModal } from './components';
 import { Button, IconButton, PageHeader, Table } from '../../shared/components';
+import { AddListModal, EditListModal, RemoveListModal } from './components';
 
 type DataRow = {
   nome: string;
@@ -21,6 +21,11 @@ export const Lists = () => {
   const handleRemove = (list: DataRow) => {
     setSelectedList(list);
     openRemoveModal();
+  };
+
+  const handleEdit = (list: DataRow) => {
+    setSelectedList(list);
+    openEditModal();
   };
 
   const data: DataRow[] = [
@@ -85,28 +90,28 @@ export const Lists = () => {
   const columns: TableColumn<DataRow>[] = [
     {
       name: 'Nome',
-      selector: (row) => row.nome,
+      selector: (list) => list.nome,
       center: true,
       sortable: true,
     },
     {
       name: 'Descrição',
-      selector: (row) => row.descricacao,
+      selector: (list) => list.descricacao,
       center: true,
     },
     {
       name: 'Ações',
-      cell: (row) => (
+      cell: (list) => (
         <>
           <IconButton
             icon={FaPen}
             variant="edit"
-            onClick={() => console.log('oi')}
+            onClick={() => handleEdit(list)}
           />
           <IconButton
             variant="remove"
             icon={FaTrash}
-            onClick={() => handleRemove(row)}
+            onClick={() => handleRemove(list)}
           />
         </>
       ),
@@ -131,6 +136,11 @@ export const Lists = () => {
         <Table columns={columns} data={data} />
 
         <AddListModal isOpen={isAddModalOpen} onRequestClose={closeAddModal} />
+
+        <EditListModal
+          isOpen={isEditModalOpen}
+          onRequestClose={closeEditModal}
+        />
 
         <RemoveListModal
           name={selectedList?.nome}

@@ -83,6 +83,37 @@ export const GlobalStyle = createGlobalStyle`
     align-items: center;
     justify-content: center;
   }
+
+  .popup-sweet-alert-background {
+    background: #202024;
+  }
+
+  .title-sweet-alert {
+    color: #E1E1E6;
+  }
+
+  .html-sweet-alert {
+    color: #C4C4CC;
+  }
+
+  .confirm-button-sweet-alert {
+    background: #02966a !important;
+    padding: 0.75rem 1.75rem;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 700;
+    transition: filter 0.3s linear;
+    outline: none;
+
+    &:focus {
+      box-shadow: none !important;
+    }
+
+    &:hover {
+      filter: brightness(1.2)
+    }
+  }
 `;
 
 // white: '#fff',

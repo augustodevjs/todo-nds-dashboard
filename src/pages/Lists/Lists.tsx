@@ -7,6 +7,7 @@ import { useModal } from '../../shared/hooks';
 import { Button, IconButton, PageHeader, Table } from '../../shared/components';
 import { AddListModal, EditListModal, RemoveListModal } from './components';
 import { AssignmentList, ListGetAll } from '../../shared/services';
+import { Alert } from '../../shared/adapters';
 
 export const Lists = () => {
   const [data, setData] = useState<AssignmentList[]>([]);
@@ -29,9 +30,15 @@ export const Lists = () => {
   useEffect(() => {
     ListGetAll().then((result) => {
       if (result instanceof Error) {
-        alert(result.message);
+        Alert.callError({
+          title: (result as Error).name,
+          description: (result as Error).message,
+        });
         return;
       } else {
+        Alert.callSuccess({
+          title: 'Preparação Cadastrada',
+        });
         setData(result);
       }
     });

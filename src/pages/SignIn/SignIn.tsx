@@ -19,7 +19,9 @@ export const SignIn = () => {
   });
 
   const onSubmit = (data: ISignInForm) => {
-    login(data.email, data.password);
+    login(data.email, data.password).then(() => {
+      alert('Logado com sucesso');
+    });
   };
 
   return (

@@ -11,6 +11,7 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   transparent?: boolean;
   variant?: 'primary' | 'danger' | 'info';
   disabled?: boolean;
+  isLoading?: boolean;
 }
 
 export interface IconButtonProps {

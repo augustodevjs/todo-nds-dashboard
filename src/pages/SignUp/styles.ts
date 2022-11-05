@@ -55,3 +55,9 @@ export const Form = styled.form`
     padding: 0.75rem;
   }
 `;
+
+export const ContainerLoading = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+`;

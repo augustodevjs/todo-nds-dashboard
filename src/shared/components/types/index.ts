@@ -11,7 +11,6 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   transparent?: boolean;
   variant?: 'primary' | 'danger' | 'info';
   disabled?: boolean;
-  isLoading?: boolean;
 }
 
 export interface IconButtonProps {
@@ -38,7 +37,9 @@ export interface ParticleProps {
   particlesColor?: string;
 }
 
-export type TableProps = ReactDataTableProps<any>;
+export type TableProps = ReactDataTableProps<any> & {
+  isLoading: boolean;
+};
 
 export type ModalProps = {
   isOpen?: boolean;

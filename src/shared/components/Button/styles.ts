@@ -4,7 +4,6 @@ type Props = {
   transparent: boolean;
   variant?: string;
   disabled?: boolean;
-  isLoading?: boolean;
 };
 
 export const Button = styled.button<Props>`

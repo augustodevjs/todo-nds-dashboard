@@ -1,17 +1,21 @@
 import { useEffect, useState } from 'react';
+
 import { MdList } from 'react-icons/md';
 import { FaTrash, FaPen } from 'react-icons/fa';
 import { TableColumn } from 'react-data-table-component';
+
+import { AddListModal, EditListModal, RemoveListModal } from './components';
+
+import { Alert } from '../../shared/adapters';
 import { SideBar } from '../../shared/layout';
 import { useModal } from '../../shared/hooks';
-import { Button, IconButton, PageHeader, Table } from '../../shared/components';
-import { AddListModal, EditListModal, RemoveListModal } from './components';
 import { AssignmentList, ListGetAll } from '../../shared/services';
-import { Alert } from '../../shared/adapters';
+import { Button, IconButton, PageHeader, Table } from '../../shared/components';
 
 export const Lists = () => {
   const [data, setData] = useState<AssignmentList[]>([]);
   const [selectedList, setSelectedList] = useState<AssignmentList>();
+  const [isLoading, setIsLoading] = useState(false);
 
   const [isAddModalOpen, openAddModal, closeAddModal] = useModal();
   const [isEditModalOpen, openEditModal, closeEditModal] = useModal();
@@ -28,17 +32,17 @@ export const Lists = () => {
   };
 
   useEffect(() => {
+    setIsLoading(true);
     ListGetAll().then((result) => {
       if (result instanceof Error) {
+        setIsLoading(false);
         Alert.callError({
           title: (result as Error).name,
           description: (result as Error).message,
         });
         return;
       } else {
-        Alert.callSuccess({
-          title: 'Preparação Cadastrada',
-        });
+        setIsLoading(false);
         setData(result);
       }
     });
@@ -85,7 +89,7 @@ export const Lists = () => {
           }
         />
 
-        <Table columns={columns} data={data} />
+        <Table isLoading={isLoading} columns={columns} data={data} />
 
         <AddListModal isOpen={isAddModalOpen} onRequestClose={closeAddModal} />
 

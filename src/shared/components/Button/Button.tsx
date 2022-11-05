@@ -8,11 +8,9 @@ export const Button = ({
   transparent = false,
   variant,
   disabled,
-  isLoading,
 }: ButtonProps) => {
   return (
     <S.Button
-      isLoading={isLoading}
       disabled={disabled}
       variant={variant}
       transparent={transparent}

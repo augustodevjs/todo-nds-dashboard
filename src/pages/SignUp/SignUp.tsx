@@ -9,9 +9,13 @@ import { Button, TextInput, TsParticle } from '../../shared/components';
 
 import * as S from './styles';
 import Logo from '../../shared/assets/logo.svg';
+import { useState } from 'react';
+import { ClipLoader } from 'react-spinners';
+import { Alert } from '../../shared/adapters';
 
 export const SignUp = () => {
   const navigate = useNavigate();
+  const [isLoading, setIsLoading] = useState(false);
 
   const { register, handleSubmit, formState } = useForm<ISignUpForm>({
     mode: 'onChange',
@@ -19,13 +23,19 @@ export const SignUp = () => {
   });
 
   const onSubmit = (data: ISignUpForm) => {
+    setIsLoading(true);
     AuthCreateUser(data).then((result) => {
       if (result instanceof Error) {
+        setIsLoading(false);
         return result.message;
       }
 
-      alert('Usuário cadastrado com sucesso!');
-      navigate('/');
+      setIsLoading(false);
+      Alert.callSuccess({
+        title: 'Sucesso!',
+        description: 'Usuário cadastrado com sucesso.',
+        onConfirm: () => navigate('/'),
+      });
     });
   };
 
@@ -65,7 +75,18 @@ export const SignUp = () => {
               {...register('passwordConfirm')}
             />
             <Button type="submit" disabled={!formState.isValid}>
-              Entrar
+              {isLoading ? (
+                <S.ContainerLoading>
+                  <ClipLoader
+                    color="#fff"
+                    loading
+                    size={18}
+                    speedMultiplier={1}
+                  />
+                </S.ContainerLoading>
+              ) : (
+                'Cadastrar'
+              )}
             </Button>
           </S.Form>
 

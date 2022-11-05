@@ -1,5 +1,7 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
+import { ClipLoader } from 'react-spinners';
 import { yupResolver } from '@hookform/resolvers/yup';
 
 import { useAuth } from '../../shared/hooks/useAuth';
@@ -12,6 +14,7 @@ import * as S from './styles';
 
 export const SignIn = () => {
   const { login } = useAuth();
+  const [isLoading, setIsLoading] = useState(false);
 
   const { register, handleSubmit, formState } = useForm<ISignInForm>({
     mode: 'onChange',
@@ -19,8 +22,9 @@ export const SignIn = () => {
   });
 
   const onSubmit = (data: ISignInForm) => {
+    setIsLoading(true);
     login(data.email, data.password).then(() => {
-      alert('Logado com sucesso');
+      setIsLoading(false);
     });
   };
 
@@ -47,7 +51,18 @@ export const SignIn = () => {
               {...register('password')}
             />
             <Button type="submit" disabled={!formState.isValid}>
-              Entrar
+              {isLoading ? (
+                <S.ContainerLoading>
+                  <ClipLoader
+                    color="#fff"
+                    loading
+                    size={18}
+                    speedMultiplier={1}
+                  />
+                </S.ContainerLoading>
+              ) : (
+                'Entrar'
+              )}
             </Button>
           </S.Form>
 

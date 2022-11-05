@@ -1,22 +1,39 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 type Props = {
   variant?: string;
   isRequired?: boolean;
+  error?: string;
 };
 
 export const TextInputForm = styled.div<Props>`
   display: flex;
   flex-direction: column;
 
+  ${({ error }) =>
+    !error &&
+    css`
+      margin-top: 1rem;
+      & + & {
+        margin-top: 1rem;
+      }
+    `}
+
   label {
     margin-bottom: 6px;
-    & + input {
-      margin-bottom: 1rem;
-    }
 
-    ${(props) => {
-      if (props.isRequired) {
+    ${({ isRequired }) =>
+      isRequired &&
+      css`
+        &:after {
+          content: '*';
+          color: #f75a68;
+          margin-left: 6px;
+        }
+      `}
+
+    ${({ isRequired }) => {
+      if (isRequired) {
         return `
           &:after {
             content: '*';
@@ -50,5 +67,11 @@ export const TextInputForm = styled.div<Props>`
         `;
       }
     }}
+  }
+
+  span {
+    margin-top: 8px;
+    font-size: 0.95rem;
+    color: #e63343;
   }
 `;

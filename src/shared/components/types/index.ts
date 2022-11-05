@@ -30,6 +30,7 @@ export interface TextInputProps extends InputHTMLAttributes<HTMLInputElement> {
   label: string;
   variant?: string;
   isRequired?: boolean;
+  error?: string;
 }
 
 export interface ParticleProps {

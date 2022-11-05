@@ -1,22 +1,22 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { useForm } from 'react-hook-form';
-import { ClipLoader } from 'react-spinners';
+import { FormProvider, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 
 import { useAuth } from '../../shared/hooks/useAuth';
 import { ISignInForm } from '../../shared/domain-types';
 import { signInForm } from '../../shared/domain-types/validators';
-import { Button, TextInput, TsParticle } from '../../shared/components';
+import { TsParticle } from '../../shared/components';
 
 import Logo from '../../shared/assets/logo.svg';
 import * as S from './styles';
+import { FormLogin } from './components';
 
 export const SignIn = () => {
   const { login } = useAuth();
   const [isLoading, setIsLoading] = useState(false);
 
-  const { register, handleSubmit, formState } = useForm<ISignInForm>({
+  const form = useForm<ISignInForm>({
     mode: 'onChange',
     resolver: yupResolver(signInForm),
   });
@@ -36,35 +36,10 @@ export const SignIn = () => {
           <S.Logo>
             <img src={Logo} alt="Logo da Aplicação" />
           </S.Logo>
-          <S.Form onSubmit={handleSubmit(onSubmit)}>
-            <h2>Autenticação</h2>
-            <TextInput
-              type="text"
-              label="Email"
-              placeholder="Digite o seu email"
-              {...register('email')}
-            />
-            <TextInput
-              type="text"
-              label="Senha"
-              placeholder="Digite a sua senha"
-              {...register('password')}
-            />
-            <Button type="submit" disabled={!formState.isValid}>
-              {isLoading ? (
-                <S.ContainerLoading>
-                  <ClipLoader
-                    color="#fff"
-                    loading
-                    size={18}
-                    speedMultiplier={1}
-                  />
-                </S.ContainerLoading>
-              ) : (
-                'Entrar'
-              )}
-            </Button>
-          </S.Form>
+
+          <FormProvider {...form}>
+            <FormLogin onSubmit={onSubmit} isLoading={isLoading} />
+          </FormProvider>
 
           <Link to="/register">Não possui uma conta?</Link>
         </S.Content>

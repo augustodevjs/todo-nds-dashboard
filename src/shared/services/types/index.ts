@@ -20,3 +20,15 @@ export interface IList {
 export interface IListItens {
   data: IList[];
 }
+
+type Assignments = {
+  id: number;
+  description: string;
+  concluded: boolean;
+  assignmentList: string;
+};
+
+export type AssignmentList = {
+  name: string;
+  assignments?: Assignments[];
+};

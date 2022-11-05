@@ -1,12 +1,12 @@
 import { api } from '../../api';
-import { IListItens } from '../types';
+import { AssignmentList } from '../types';
 
-export const listGetAll = async (): Promise<IListItens | Error> => {
+export const ListGetAll = async (): Promise<AssignmentList[] | Error> => {
   try {
     const { data } = await api.get('/AssignmentList');
 
     if (data) {
-      return data;
+      return data.items;
     }
 
     return new Error('Erro ao listar as tarefas');

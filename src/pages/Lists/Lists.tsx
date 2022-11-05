@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { MdList } from 'react-icons/md';
 import { FaTrash, FaPen } from 'react-icons/fa';
 import { TableColumn } from 'react-data-table-component';
@@ -6,37 +6,38 @@ import { SideBar } from '../../shared/layout';
 import { useModal } from '../../shared/hooks';
 import { Button, IconButton, PageHeader, Table } from '../../shared/components';
 import { AddListModal, EditListModal, RemoveListModal } from './components';
-import { IList } from '../../shared/services';
+import { AssignmentList, ListGetAll } from '../../shared/services';
 
 export const Lists = () => {
-  const [selectedList, setSelectedList] = useState<IList>();
+  const [data, setData] = useState<AssignmentList[]>([]);
+  const [selectedList, setSelectedList] = useState<AssignmentList>();
+
   const [isAddModalOpen, openAddModal, closeAddModal] = useModal();
   const [isEditModalOpen, openEditModal, closeEditModal] = useModal();
   const [isRemoveModalOpen, openRemoveModal, closeRemoveModal] = useModal();
 
-  const handleRemove = (list: IList) => {
+  const handleRemove = (list: AssignmentList) => {
     setSelectedList(list);
     openRemoveModal();
   };
 
-  const handleEdit = (list: IList) => {
+  const handleEdit = (list: AssignmentList) => {
     setSelectedList(list);
     openEditModal();
   };
 
-  const data: IList[] = [
-    {
-      name: 'João Augusto',
-    },
-    {
-      name: 'Rafaela',
-    },
-    {
-      name: 'Eliza',
-    },
-  ];
+  useEffect(() => {
+    ListGetAll().then((result) => {
+      if (result instanceof Error) {
+        alert(result.message);
+        return;
+      } else {
+        setData(result);
+      }
+    });
+  }, []);
 
-  const columns: TableColumn<IList>[] = [
+  const columns: TableColumn<AssignmentList>[] = [
     {
       name: 'name',
       selector: (list) => list.name,

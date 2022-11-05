@@ -1,7 +1,7 @@
 import { api } from '../../api';
 import { IList } from '../types';
 
-export const listUpdate = async (
+export const ListUpdate = async (
   data: IList,
   id: number,
 ): Promise<void | Error> => {

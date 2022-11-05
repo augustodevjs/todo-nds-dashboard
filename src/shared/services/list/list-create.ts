@@ -1,7 +1,7 @@
 import { api } from '../../api';
 import { IList } from '../types';
 
-export const listCreate = async (data: IList): Promise<void | Error> => {
+export const ListCreate = async (data: IList): Promise<void | Error> => {
   try {
     await api.post<IList>('/AssignmentList', data);
   } catch (error) {

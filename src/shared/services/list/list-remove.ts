@@ -1,6 +1,6 @@
 import { api } from '../../api';
 
-export const listRemove = async (id: number): Promise<void | Error> => {
+export const ListRemove = async (id: number): Promise<void | Error> => {
   try {
     await api.delete(`/AssignmentList/${id}`);
   } catch (error) {

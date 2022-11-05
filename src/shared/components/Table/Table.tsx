@@ -1,4 +1,5 @@
 import { TableProps } from '../types';
+import { TableNoData } from './components';
 import * as S from './styles';
 
 export const Table: React.FC<TableProps> = ({ columns, data }) => {
@@ -8,6 +9,7 @@ export const Table: React.FC<TableProps> = ({ columns, data }) => {
       data={data}
       pagination
       paginationPerPage={10}
+      noDataComponent={<TableNoData />}
       paginationComponentOptions={{
         noRowsPerPage: true,
         rangeSeparatorText: 'de',

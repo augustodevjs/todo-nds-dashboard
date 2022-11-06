@@ -6,9 +6,11 @@ export const AuthCreateUser = async (
 ): Promise<void | Error> => {
   try {
     await api.post<IRegister>('/Auth/register', data);
-  } catch (error) {
+  } catch (error: any) {
     return new Error(
-      (error as { message: string }).message || 'Erro no cadastro do usuário',
+      error.response?.data.erros ||
+        (error as { message: string }).message ||
+        'Erro no cadastro do usuário',
     );
   }
 };

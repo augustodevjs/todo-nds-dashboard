@@ -13,7 +13,11 @@ export const AuthService = async (
     }
 
     return new Error('Erro no Login!');
-  } catch (error) {
-    return new Error((error as { message: string }).message || 'Erro no Login');
+  } catch (error: any) {
+    return new Error(
+      error.response?.data.erros ||
+        (error as { message: string }).message ||
+        'Erro no Login',
+    );
   }
 };

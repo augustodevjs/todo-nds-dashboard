@@ -1,5 +1,6 @@
 import { createContext, useCallback, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Alert } from '../adapters';
 import { api } from '../api/axios-config';
 import { AuthService } from '../services';
 import { IAuthContext, IAuthProviderProps } from './types';
@@ -25,7 +26,11 @@ export const AuthProvider: React.FC<IAuthProviderProps> = ({ children }) => {
       const result = await AuthService(email, password);
 
       if (result instanceof Error) {
-        return result.message;
+        Alert.callError({
+          title: (result as Error).name,
+          description: (result as Error).message,
+        });
+        return;
       } else {
         localStorage.setItem('@todo_nds:user', JSON.stringify(result.user));
         localStorage.setItem('@todo_nds:accessToken', result.accessToken);

@@ -27,7 +27,13 @@ export const SignUp = () => {
     AuthCreateUser(data).then((result) => {
       if (result instanceof Error) {
         setIsLoading(false);
-        return result.message;
+        Alert.callError({
+          title: (result as Error).name,
+          description: (result as Error).message,
+        });
+
+        form.reset();
+        return;
       }
 
       setIsLoading(false);

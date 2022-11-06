@@ -4,13 +4,13 @@ import { FormProvider, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 
 import { useAuth } from '../../shared/hooks/useAuth';
+import { TsParticle } from '../../shared/components';
 import { ISignInForm } from '../../shared/domain-types';
 import { signInForm } from '../../shared/domain-types/validators';
-import { TsParticle } from '../../shared/components';
 
-import Logo from '../../shared/assets/logo.svg';
 import * as S from './styles';
 import { FormLogin } from './components';
+import Logo from '../../shared/assets/logo.svg';
 
 export const SignIn = () => {
   const { login } = useAuth();

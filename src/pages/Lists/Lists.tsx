@@ -13,9 +13,9 @@ import { AssignmentList, ListGetAll } from '../../shared/services';
 import { Button, IconButton, PageHeader, Table } from '../../shared/components';
 
 export const Lists = () => {
+  const [isLoading, setIsLoading] = useState(false);
   const [data, setData] = useState<AssignmentList[]>([]);
   const [selectedList, setSelectedList] = useState<AssignmentList>();
-  const [isLoading, setIsLoading] = useState(false);
 
   const [isAddModalOpen, openAddModal, closeAddModal] = useModal();
   const [isEditModalOpen, openEditModal, closeEditModal] = useModal();
@@ -94,6 +94,7 @@ export const Lists = () => {
         <AddListModal isOpen={isAddModalOpen} onRequestClose={closeAddModal} />
 
         <EditListModal
+          id={selectedList?.id}
           isOpen={isEditModalOpen}
           onRequestClose={closeEditModal}
         />

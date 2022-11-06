@@ -17,7 +17,7 @@ export const AddListModal: React.FC<Props> = ({ isOpen, onRequestClose }) => {
   });
 
   const submitButton = (
-    <Button type="submit" form="add-list-form" variant="primary">
+    <Button type="submit" form="add" variant="primary">
       Salvar
     </Button>
   );
@@ -38,7 +38,7 @@ export const AddListModal: React.FC<Props> = ({ isOpen, onRequestClose }) => {
   return (
     <Modal {...modalConfigs}>
       <FormProvider {...form}>
-        <ListForm id="add-list-form" onSubmit={onSubmit} />
+        <ListForm id="add" onSubmit={onSubmit} />
       </FormProvider>
     </Modal>
   );

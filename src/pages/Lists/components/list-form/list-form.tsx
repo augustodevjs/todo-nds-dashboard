@@ -8,12 +8,12 @@ type Props = {
   id: string;
 };
 
-export const ListForm: React.FC<Props> = ({ onSubmit, ...rest }) => {
+export const ListForm: React.FC<Props> = ({ onSubmit, id, ...rest }) => {
   const { register, handleSubmit, formState } = useFormContext<ListFormInput>();
 
   return (
     <S.Container>
-      <form {...rest} onSubmit={handleSubmit(onSubmit)}>
+      <form {...rest} id="add" onSubmit={handleSubmit(() => console.log('oi'))}>
         <TextInput
           type="text"
           label="Nome"

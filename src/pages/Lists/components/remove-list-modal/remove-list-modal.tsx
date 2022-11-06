@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction, useCallback, useState } from 'react';
+import { Dispatch, SetStateAction, useState } from 'react';
 import { FaTrash } from 'react-icons/fa';
 import { Alert } from '../../../../shared/adapters';
 import { AssignmentList, ListRemove } from '../../../../shared/services';
@@ -23,7 +23,7 @@ export const RemoveListModal: React.FC<Props> = ({
 }) => {
   const [isLoading, setIsLoading] = useState(false);
 
-  const onConfirm = useCallback(() => {
+  const onConfirm = () => {
     if (id) {
       setIsLoading(true);
       ListRemove(id).then((result) => {
@@ -45,7 +45,7 @@ export const RemoveListModal: React.FC<Props> = ({
         setData((data) => data.filter((list) => list.id !== id));
       });
     }
-  }, [id]);
+  };
 
   const modalConfigs: ConfirmModalProps = {
     isOpen,

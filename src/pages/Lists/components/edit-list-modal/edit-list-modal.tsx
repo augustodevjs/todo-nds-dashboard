@@ -4,9 +4,15 @@ import { Button, Modal, ModalProps } from '../../../../shared/components';
 import { ListFormInput } from '../../../../shared/domain-types';
 import { ListForm } from '../list-form/list-form';
 
-type Props = Pick<ModalProps, 'isOpen' | 'onRequestClose'>;
+type Props = Pick<ModalProps, 'isOpen' | 'onRequestClose'> & {
+  id?: number;
+};
 
-export const EditListModal: React.FC<Props> = ({ isOpen, onRequestClose }) => {
+export const EditListModal: React.FC<Props> = ({
+  isOpen,
+  onRequestClose,
+  id,
+}) => {
   const form = useForm<ListFormInput>({
     mode: 'onChange',
   });

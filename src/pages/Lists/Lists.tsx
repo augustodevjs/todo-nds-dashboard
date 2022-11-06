@@ -99,6 +99,8 @@ export const Lists = () => {
         />
 
         <RemoveListModal
+          id={selectedList?.id}
+          setData={setData}
           name={selectedList?.name}
           isOpen={isRemoveModalOpen}
           onRequestClose={closeRemoveModal}

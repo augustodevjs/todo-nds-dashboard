@@ -55,6 +55,7 @@ export type ModalProps = {
 export interface ConfirmModalProps extends ModalProps {
   onConfirm: () => void;
   message?: string;
+  isLoading: boolean;
 }
 
 export interface TextAreaInputProps

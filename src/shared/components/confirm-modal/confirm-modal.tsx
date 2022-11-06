@@ -1,4 +1,5 @@
 import { IoMdClose } from 'react-icons/io';
+import { ClipLoader } from 'react-spinners';
 import { Button, ConfirmModalProps } from '../../components';
 import * as S from './styles';
 
@@ -8,8 +9,9 @@ export const ConfirmModal: React.FC<ConfirmModalProps> = ({
   icon: Icon,
   message,
   title,
-  actions,
   size,
+  onConfirm,
+  isLoading,
 }) => {
   return (
     <S.Modal
@@ -33,7 +35,15 @@ export const ConfirmModal: React.FC<ConfirmModalProps> = ({
         <Button variant="danger" onClick={onRequestClose}>
           Fechar
         </Button>
-        {actions?.map((action) => action)}
+        <Button onClick={onConfirm}>
+          {isLoading ? (
+            <S.ContainerLoading>
+              <ClipLoader color="#fff" loading size={18} speedMultiplier={1} />
+            </S.ContainerLoading>
+          ) : (
+            'Confirmar'
+          )}
+        </Button>
       </S.ButtonGroup>
     </S.Modal>
   );

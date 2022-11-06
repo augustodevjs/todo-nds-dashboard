@@ -29,6 +29,7 @@ type Assignments = {
 };
 
 export type AssignmentList = {
+  id: number;
   name: string;
   assignments?: Assignments[];
 };

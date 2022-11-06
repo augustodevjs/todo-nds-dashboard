@@ -1,6 +1,8 @@
+import { Dispatch, SetStateAction, useCallback, useState } from 'react';
 import { FaTrash } from 'react-icons/fa';
+import { Alert } from '../../../../shared/adapters';
+import { AssignmentList, ListRemove } from '../../../../shared/services';
 import {
-  Button,
   ConfirmModal,
   ConfirmModalProps,
   ModalProps,
@@ -8,28 +10,52 @@ import {
 
 type Props = Pick<ModalProps, 'isOpen' | 'onRequestClose'> & {
   name?: string;
+  id?: number;
+  setData: Dispatch<SetStateAction<AssignmentList[]>>;
 };
 
 export const RemoveListModal: React.FC<Props> = ({
   isOpen,
   onRequestClose,
   name,
+  id,
+  setData,
 }) => {
-  const submitButton = (
-    <Button type="submit" form="add" variant="primary">
-      Confirmar
-    </Button>
-  );
+  const [isLoading, setIsLoading] = useState(false);
+
+  const onConfirm = useCallback(() => {
+    if (id) {
+      setIsLoading(true);
+      ListRemove(id).then((result) => {
+        if (result instanceof Error) {
+          setIsLoading(false);
+          Alert.callError({
+            title: (result as Error).name,
+            description: (result as Error).message,
+          });
+          return;
+        }
+
+        setIsLoading(false);
+        Alert.callSuccess({
+          title: `Item removido com sucesso!`,
+          onConfirm: onRequestClose,
+        });
+
+        setData((data) => data.filter((list) => list.id !== id));
+      });
+    }
+  }, [id]);
 
   const modalConfigs: ConfirmModalProps = {
     isOpen,
     onRequestClose,
+    onConfirm,
     title: 'Remoção de Lista',
     icon: FaTrash,
     size: 'sm',
     message: `Tem certeza de que deseja excluir a lista ${name}?`,
-    onConfirm: () => console.log('oi'),
-    actions: [submitButton],
+    isLoading: isLoading,
   };
 
   return <ConfirmModal {...modalConfigs} />;

@@ -67,3 +67,9 @@ export const ButtonGroup = styled.div`
     }
   }
 `;
+
+export const ContainerLoading = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+`;

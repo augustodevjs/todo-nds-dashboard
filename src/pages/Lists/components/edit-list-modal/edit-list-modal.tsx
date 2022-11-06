@@ -1,6 +1,6 @@
 import { FaPen } from 'react-icons/fa';
-import { Button, Modal, ModalProps } from '../../../../shared/components';
 import { FormProvider, useForm } from 'react-hook-form';
+import { Button, Modal, ModalProps } from '../../../../shared/components';
 import { ListFormInput } from '../../../../shared/domain-types';
 import { ListForm } from '../list-form/list-form';
 

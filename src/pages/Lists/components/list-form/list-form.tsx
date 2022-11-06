@@ -1,18 +1,19 @@
-import { useFormContext } from 'react-hook-form';
+import { SubmitHandler, useFormContext } from 'react-hook-form';
 import { TextInput } from '../../../../shared/components';
 import { ListFormInput } from '../../../../shared/domain-types';
 import * as S from './styles';
 
 type Props = {
-  onSubmit: (data: ListFormInput) => void;
+  onSubmit: SubmitHandler<ListFormInput>;
+  id: string;
 };
 
-export const ListForm: React.FC<Props> = ({ onSubmit }) => {
+export const ListForm: React.FC<Props> = ({ onSubmit, ...rest }) => {
   const { register, handleSubmit, formState } = useFormContext<ListFormInput>();
 
   return (
     <S.Container>
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form {...rest} onSubmit={handleSubmit(onSubmit)}>
         <TextInput
           type="text"
           label="Nome"

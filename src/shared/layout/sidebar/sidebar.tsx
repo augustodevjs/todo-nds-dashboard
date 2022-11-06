@@ -32,7 +32,7 @@ export const SideBar: React.FC<SidebarProps> = ({ children }) => {
               </S.Logo>
 
               <S.List>
-                <Link to="/tasks">
+                <Link className="selected" to="/tasks">
                   <MdInbox />
                   <span>Tarefas</span>
                 </Link>

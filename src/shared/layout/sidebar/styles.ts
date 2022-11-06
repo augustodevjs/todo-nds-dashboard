@@ -120,7 +120,7 @@ export const List = styled.div`
     position: relative;
     color: #fff;
     transition: 0.5s;
-    background-color: #1b1b1e;
+    /* background-color: #1b1b1e; */
 
     &:hover {
       color: #fff;

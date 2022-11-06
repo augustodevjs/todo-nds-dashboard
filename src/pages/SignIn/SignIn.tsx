@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { FormProvider, useForm } from 'react-hook-form';
+import { FormProvider, SubmitHandler, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 
 import { useAuth } from '../../shared/hooks/useAuth';
@@ -21,7 +21,7 @@ export const SignIn = () => {
     resolver: yupResolver(signInForm),
   });
 
-  const onSubmit = (data: ISignInForm) => {
+  const onSubmit: SubmitHandler<ISignInForm> = (data) => {
     setIsLoading(true);
     login(data.email, data.password).then(() => {
       setIsLoading(false);

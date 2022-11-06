@@ -1,4 +1,4 @@
-import { useFormContext } from 'react-hook-form';
+import { SubmitHandler, useFormContext } from 'react-hook-form';
 import { ClipLoader } from 'react-spinners';
 import { Button, TextInput } from '../../../../shared/components';
 import { ISignUpForm } from '../../../../shared/domain-types';
@@ -7,7 +7,7 @@ import * as S from './styles';
 
 type Props = {
   isLoading: boolean;
-  onSubmit: (data: ISignUpForm) => void;
+  onSubmit: SubmitHandler<ISignUpForm>;
 };
 
 export const RegisterForm: React.FC<Props> = ({ isLoading, onSubmit }) => {
@@ -20,32 +20,32 @@ export const RegisterForm: React.FC<Props> = ({ isLoading, onSubmit }) => {
         type="text"
         label="Nome"
         isRequired
-        error={formState.errors.name?.message}
         placeholder="Digite o seu nome"
+        error={formState.errors.name?.message}
         {...register('name')}
       />
       <TextInput
         type="email"
         label="Email"
         isRequired
-        error={formState.errors.email?.message}
         placeholder="Digite o seu email"
+        error={formState.errors.email?.message}
         {...register('email')}
       />
       <TextInput
         type="password"
         label="Senha"
         isRequired
-        error={formState.errors.password?.message}
         placeholder="Digite a sua senha"
+        error={formState.errors.password?.message}
         {...register('password')}
       />
       <TextInput
         type="password"
         label="Confirmação de Senha"
         isRequired
-        error={formState.errors.passwordConfirm?.message}
         placeholder="Repita novamente sua senha"
+        error={formState.errors.passwordConfirm?.message}
         {...register('passwordConfirm')}
       />
       <Button type="submit" disabled={!formState.isValid}>

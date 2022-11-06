@@ -1,5 +1,5 @@
 import { FaPlus } from 'react-icons/fa';
-import { FormProvider, useForm } from 'react-hook-form';
+import { FormProvider, SubmitHandler, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 
 import { ListFormInput } from '../../../../shared/domain-types';
@@ -17,12 +17,12 @@ export const AddListModal: React.FC<Props> = ({ isOpen, onRequestClose }) => {
   });
 
   const submitButton = (
-    <Button type="submit" variant="primary">
+    <Button type="submit" form="add-list-form" variant="primary">
       Salvar
     </Button>
   );
 
-  const onSubmit = (data: ListFormInput) => {
+  const onSubmit: SubmitHandler<ListFormInput> = (data) => {
     console.log(data);
   };
 
@@ -38,7 +38,7 @@ export const AddListModal: React.FC<Props> = ({ isOpen, onRequestClose }) => {
   return (
     <Modal {...modalConfigs}>
       <FormProvider {...form}>
-        <ListForm onSubmit={onSubmit} />
+        <ListForm id="add-list-form" onSubmit={onSubmit} />
       </FormProvider>
     </Modal>
   );

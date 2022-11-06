@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { FormProvider, useForm } from 'react-hook-form';
+import { FormProvider, SubmitHandler, useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
 import { yupResolver } from '@hookform/resolvers/yup';
 
@@ -22,7 +22,7 @@ export const SignUp = () => {
     resolver: yupResolver(signUpForm),
   });
 
-  const onSubmit = (data: ISignUpForm) => {
+  const onSubmit: SubmitHandler<ISignUpForm> = (data) => {
     setIsLoading(true);
     AuthCreateUser(data).then((result) => {
       if (result instanceof Error) {

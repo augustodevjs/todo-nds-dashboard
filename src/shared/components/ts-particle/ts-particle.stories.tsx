@@ -1,4 +1,4 @@
-import { TsParticle } from './TsParticle';
+import { TsParticle } from './ts-particle';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 
 export default {

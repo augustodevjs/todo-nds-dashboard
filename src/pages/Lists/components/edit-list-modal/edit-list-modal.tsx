@@ -12,7 +12,7 @@ export const EditListModal: React.FC<Props> = ({ isOpen, onRequestClose }) => {
   });
 
   const submitButton = (
-    <Button type="submit" form="add" variant="primary">
+    <Button type="submit" form="edit-list-form" variant="primary">
       Salvar
     </Button>
   );
@@ -33,7 +33,7 @@ export const EditListModal: React.FC<Props> = ({ isOpen, onRequestClose }) => {
   return (
     <Modal {...modalConfigs}>
       <FormProvider {...form}>
-        <ListForm onSubmit={onSubmit} />
+        <ListForm id="edit-list-form" onSubmit={onSubmit} />
       </FormProvider>
     </Modal>
   );

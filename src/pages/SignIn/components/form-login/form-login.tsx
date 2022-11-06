@@ -1,4 +1,4 @@
-import { useFormContext } from 'react-hook-form';
+import { SubmitHandler, useFormContext } from 'react-hook-form';
 import { ClipLoader } from 'react-spinners';
 import { ISignInForm } from '../../../../shared/domain-types';
 import { Button, TextInput } from '../../../../shared/components';
@@ -6,7 +6,7 @@ import * as S from './styles';
 
 type Props = {
   isLoading: boolean;
-  onSubmit: (data: ISignInForm) => void;
+  onSubmit: SubmitHandler<ISignInForm>;
 };
 
 export const FormLogin: React.FC<Props> = ({ isLoading, onSubmit }) => {
@@ -18,16 +18,16 @@ export const FormLogin: React.FC<Props> = ({ isLoading, onSubmit }) => {
       <TextInput
         type="text"
         label="Email"
-        placeholder="Digite o seu email"
         isRequired
+        placeholder="Digite o seu email"
         error={formState.errors.email?.message}
         {...register('email')}
       />
       <TextInput
         type="password"
         label="Senha"
-        placeholder="Digite a sua senha"
         isRequired
+        placeholder="Digite a sua senha"
         error={formState.errors.password?.message}
         {...register('password')}
       />

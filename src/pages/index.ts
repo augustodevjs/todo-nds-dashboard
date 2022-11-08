@@ -1,4 +1,4 @@
-export * from './SignIn/SignIn';
-export * from './SignUp/SignUp';
+export * from './Login/Login';
+export * from './Register/Register';
 export * from './Tasks/Tasks';
 export * from './Lists/Lists';

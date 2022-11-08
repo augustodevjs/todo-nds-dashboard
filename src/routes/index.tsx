@@ -1,5 +1,5 @@
 import { Routes, Route } from 'react-router-dom';
-import { Tasks, SignIn, SignUp, Lists } from '../pages';
+import { Tasks, Login, Register, Lists } from '../pages';
 import { useAuth } from '../shared/hooks/useAuth';
 
 export const AppRoutes = () => {
@@ -14,8 +14,8 @@ export const AppRoutes = () => {
         </>
       ) : (
         <>
-          <Route path="/" element={<SignIn />} />
-          <Route path="/register" element={<SignUp />} />
+          <Route path="/" element={<Login />} />
+          <Route path="/register" element={<Register />} />
         </>
       )}
     </Routes>

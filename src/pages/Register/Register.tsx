@@ -11,7 +11,7 @@ import * as S from './styles';
 import { RegisterForm } from './components';
 import Logo from '../../shared/assets/logo.svg';
 
-export const SignUp = () => {
+export const Register = () => {
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
 

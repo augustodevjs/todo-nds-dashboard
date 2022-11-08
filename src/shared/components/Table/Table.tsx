@@ -1,5 +1,5 @@
 import { TableProps } from '../types';
-import { TableNoData, TableLoading } from './components';
+import { TableLoading, TableNoData } from './components';
 import * as S from './styles';
 
 export const Table: React.FC<TableProps> = ({

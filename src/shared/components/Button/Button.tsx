@@ -1,5 +1,6 @@
 import { ButtonProps } from '../types';
 import * as S from './styles';
+
 export const Button = ({
   children,
   onClick,

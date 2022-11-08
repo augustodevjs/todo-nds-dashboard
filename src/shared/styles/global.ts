@@ -65,7 +65,7 @@ export const GlobalStyle = createGlobalStyle`
       }
     }
 
-    @media(max-width: 1229px) {
+    @media(max-width: 735px) {
       margin-top: 0;
     }
   }

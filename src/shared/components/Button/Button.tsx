@@ -1,6 +1,5 @@
 import { ButtonProps } from '../types';
 import * as S from './styles';
-
 export const Button = ({
   children,
   onClick,
@@ -8,6 +7,7 @@ export const Button = ({
   transparent = false,
   variant,
   disabled,
+  ...rest
 }: ButtonProps) => {
   return (
     <S.Button
@@ -16,6 +16,7 @@ export const Button = ({
       transparent={transparent}
       type={type}
       onClick={onClick}
+      {...rest}
     >
       {children}
     </S.Button>

@@ -1,5 +1,5 @@
-import { SubmitHandler, useFormContext } from 'react-hook-form';
 import { ClipLoader } from 'react-spinners';
+import { SubmitHandler, useFormContext } from 'react-hook-form';
 import { ISignInForm } from '../../../../shared/domain-types';
 import { Button, TextInput } from '../../../../shared/components';
 import * as S from './styles';

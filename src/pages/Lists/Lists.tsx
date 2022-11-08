@@ -1,16 +1,13 @@
 import { useEffect, useState } from 'react';
-
 import { MdList } from 'react-icons/md';
 import { FaTrash, FaPen } from 'react-icons/fa';
 import { TableColumn } from 'react-data-table-component';
-
-import { AddListModal, EditListModal, RemoveListModal } from './components';
-
 import { Alert } from '../../shared/adapters';
 import { SideBar } from '../../shared/layout';
 import { useModal } from '../../shared/hooks';
 import { AssignmentList, ListGetAll } from '../../shared/services';
 import { Button, IconButton, PageHeader, Table } from '../../shared/components';
+import { AddListModal, EditListModal, RemoveListModal } from './components';
 
 export const Lists = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -91,7 +88,11 @@ export const Lists = () => {
 
         <Table isLoading={isLoading} columns={columns} data={data} />
 
-        <AddListModal isOpen={isAddModalOpen} onRequestClose={closeAddModal} />
+        <AddListModal
+          setData={setData}
+          isOpen={isAddModalOpen}
+          onRequestClose={closeAddModal}
+        />
 
         <EditListModal
           id={selectedList?.id}

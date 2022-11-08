@@ -1,5 +1,5 @@
-import { Dispatch, SetStateAction, useState } from 'react';
 import { FaTrash } from 'react-icons/fa';
+import { Dispatch, SetStateAction, useState } from 'react';
 import { Alert } from '../../../../shared/adapters';
 import { AssignmentList, ListRemove } from '../../../../shared/services';
 import {

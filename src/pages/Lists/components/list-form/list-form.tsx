@@ -1,5 +1,5 @@
-import { SubmitHandler, useFormContext } from 'react-hook-form';
 import { TextInput } from '../../../../shared/components';
+import { SubmitHandler, useFormContext } from 'react-hook-form';
 import { ListFormInput } from '../../../../shared/domain-types';
 import * as S from './styles';
 

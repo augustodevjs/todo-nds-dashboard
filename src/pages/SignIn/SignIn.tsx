@@ -1,8 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { FormProvider, SubmitHandler, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-
+import { FormProvider, SubmitHandler, useForm } from 'react-hook-form';
 import { useAuth } from '../../shared/hooks/useAuth';
 import { TsParticle } from '../../shared/components';
 import { ISignInForm } from '../../shared/domain-types';

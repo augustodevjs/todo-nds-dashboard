@@ -1,12 +1,16 @@
+import { useState } from 'react';
 import { FaPen } from 'react-icons/fa';
+import { ClipLoader } from 'react-spinners';
 import { FormProvider, useForm } from 'react-hook-form';
-import { Button, Modal, ModalProps } from '../../../../shared/components';
 import { ListFormInput } from '../../../../shared/domain-types';
-import { ListForm } from '../list-form/list-form';
+import { Button, Modal, ModalProps } from '../../../../shared/components';
+import { ListForm } from '../../components';
 
 type Props = Pick<ModalProps, 'isOpen' | 'onRequestClose'> & {
   id?: number;
 };
+
+import * as S from './styles';
 
 export const EditListModal: React.FC<Props> = ({
   isOpen,
@@ -17,9 +21,22 @@ export const EditListModal: React.FC<Props> = ({
     mode: 'onChange',
   });
 
+  const [isLoading, setIsLoading] = useState(false);
+
   const submitButton = (
-    <Button type="submit" form="edit-list-form" variant="primary">
-      Salvar
+    <Button
+      type="submit"
+      disabled={!form.formState.isValid}
+      form="edit-list-form"
+      variant="primary"
+    >
+      {isLoading ? (
+        <S.ContainerLoading>
+          <ClipLoader color="#fff" loading size={18} speedMultiplier={1} />
+        </S.ContainerLoading>
+      ) : (
+        'Salvar'
+      )}
     </Button>
   );
 

@@ -1,8 +1,7 @@
-import { SubmitHandler, useFormContext } from 'react-hook-form';
 import { ClipLoader } from 'react-spinners';
+import { SubmitHandler, useFormContext } from 'react-hook-form';
 import { Button, TextInput } from '../../../../shared/components';
 import { ISignUpForm } from '../../../../shared/domain-types';
-
 import * as S from './styles';
 
 type Props = {

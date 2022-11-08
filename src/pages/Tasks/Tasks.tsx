@@ -1,7 +1,6 @@
 import { MdInbox } from 'react-icons/md';
-
-import { Button, PageHeader } from '../../shared/components';
 import { SideBar } from '../../shared/layout';
+import { Button, PageHeader } from '../../shared/components';
 
 export const Tasks = () => {
   return (

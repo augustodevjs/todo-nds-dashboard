@@ -89,7 +89,6 @@ export const Lists = () => {
         <Table isLoading={isLoading} columns={columns} data={data} />
 
         <AddListModal
-          dataList={data}
           setData={setData}
           isOpen={isAddModalOpen}
           onRequestClose={closeAddModal}

@@ -63,12 +63,12 @@ export const AddListModal: React.FC<Props> = ({
 
       Alert.callSuccess({
         title: 'Item cadastrado',
+        onConfirm: onRequestClose,
       });
 
-      setData((prevData) => [...prevData, result]);
-
       form.reset();
-      onRequestClose?.();
+
+      setData((prevData) => [...prevData, result]);
     });
   };
 

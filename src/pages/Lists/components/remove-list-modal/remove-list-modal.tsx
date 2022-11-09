@@ -37,6 +37,7 @@ export const RemoveListModal: React.FC<Props> = ({
         }
 
         setIsLoading(false);
+
         Alert.callSuccess({
           title: `Item removido com sucesso!`,
           onConfirm: onRequestClose,

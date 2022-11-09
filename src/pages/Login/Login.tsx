@@ -12,8 +12,8 @@ import { FormLogin } from './components';
 import Logo from '../../shared/assets/logo.svg';
 
 export const Login = () => {
-  const { login } = useAuth();
   const [isLoading, setIsLoading] = useState(false);
+  const { login } = useAuth();
 
   const form = useForm<ISignInForm>({
     mode: 'onChange',

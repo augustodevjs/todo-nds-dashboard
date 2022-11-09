@@ -13,12 +13,14 @@ import * as S from './styles';
 
 type Props = Pick<ModalProps, 'isOpen' | 'onRequestClose'> & {
   setData: Dispatch<SetStateAction<AssignmentList[]>>;
+  dataList: AssignmentList[];
 };
 
 export const AddListModal: React.FC<Props> = ({
   isOpen,
   onRequestClose,
   setData,
+  dataList,
 }) => {
   const form = useForm<ListFormInput>({
     mode: 'onChange',
@@ -64,6 +66,8 @@ export const AddListModal: React.FC<Props> = ({
       Alert.callSuccess({
         title: 'Item cadastrado',
       });
+
+      setData([...dataList, result]);
 
       form.reset();
       onRequestClose?.();

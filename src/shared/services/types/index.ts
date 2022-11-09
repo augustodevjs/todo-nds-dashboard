@@ -14,7 +14,9 @@ export interface IAuth {
 }
 
 export interface IList {
+  id?: number;
   name: string;
+  assignments?: Assignments[];
 }
 
 export interface IListItens {
@@ -29,7 +31,7 @@ type Assignments = {
 };
 
 export type AssignmentList = {
-  id: number;
+  id?: number;
   name: string;
   assignments?: Assignments[];
 };

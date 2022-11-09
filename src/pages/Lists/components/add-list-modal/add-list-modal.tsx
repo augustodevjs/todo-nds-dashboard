@@ -3,13 +3,15 @@ import { ClipLoader } from 'react-spinners';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Dispatch, SetStateAction, useState } from 'react';
 import { FormProvider, SubmitHandler, useForm } from 'react-hook-form';
+
 import { Alert } from '../../../../shared/adapters';
 import { ListFormInput } from '../../../../shared/domain-types';
 import { AssignmentList, ListCreate } from '../../../../shared/services';
 import { Button, Modal, ModalProps } from '../../../../shared/components';
 import { listFormValidation } from '../../../../shared/domain-types/validators';
-import { ListForm } from '../../components';
+
 import * as S from './styles';
+import { ListForm } from '../../components';
 
 type Props = Pick<ModalProps, 'isOpen' | 'onRequestClose'> & {
   setData: Dispatch<SetStateAction<AssignmentList[]>>;
@@ -20,15 +22,16 @@ export const AddListModal: React.FC<Props> = ({
   onRequestClose,
   setData,
 }) => {
+  const [isLoading, setIsLoading] = useState(false);
+
   const form = useForm<ListFormInput>({
     mode: 'onChange',
     resolver: yupResolver(listFormValidation),
   });
 
-  const [isLoading, setIsLoading] = useState(false);
-
   const submitButton = (
     <Button
+      type="submit"
       disabled={!form.formState.isValid}
       form="add-form-input"
       variant="primary"

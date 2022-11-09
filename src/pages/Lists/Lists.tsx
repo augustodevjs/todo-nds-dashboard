@@ -74,40 +74,39 @@ export const Lists = () => {
 
   return (
     <SideBar>
-      <>
-        <PageHeader
-          title="Listas"
-          description="Página de gerenciamento das listas"
-          icon={MdList}
-          action={
-            <Button transparent onClick={openAddModal}>
-              Novo
-            </Button>
-          }
-        />
+      <PageHeader
+        title="Listas"
+        description="Página de gerenciamento das listas"
+        icon={MdList}
+        action={
+          <Button transparent onClick={openAddModal}>
+            Novo
+          </Button>
+        }
+      />
 
-        <Table isLoading={isLoading} columns={columns} data={data} />
+      <Table isLoading={isLoading} columns={columns} data={data} />
 
-        <AddListModal
-          setData={setData}
-          isOpen={isAddModalOpen}
-          onRequestClose={closeAddModal}
-        />
+      <AddListModal
+        setData={setData}
+        isOpen={isAddModalOpen}
+        onRequestClose={closeAddModal}
+      />
 
-        <EditListModal
-          id={selectedList?.id}
-          isOpen={isEditModalOpen}
-          onRequestClose={closeEditModal}
-        />
+      <EditListModal
+        setData={setData}
+        id={selectedList?.id}
+        isOpen={isEditModalOpen}
+        onRequestClose={closeEditModal}
+      />
 
-        <RemoveListModal
-          id={selectedList?.id}
-          setData={setData}
-          name={selectedList?.name}
-          isOpen={isRemoveModalOpen}
-          onRequestClose={closeRemoveModal}
-        />
-      </>
+      <RemoveListModal
+        id={selectedList?.id}
+        setData={setData}
+        name={selectedList?.name}
+        isOpen={isRemoveModalOpen}
+        onRequestClose={closeRemoveModal}
+      />
     </SideBar>
   );
 };

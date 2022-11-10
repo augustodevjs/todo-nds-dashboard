@@ -10,11 +10,9 @@ export const Table: React.FC<TableProps> = ({
 }) => {
   return (
     <S.Table
-      striped
       columns={columns}
       data={data}
       pagination
-      paginationPerPage={10}
       noDataComponent={<TableNoData />}
       progressComponent={<TableLoading />}
       progressPending={isLoading}

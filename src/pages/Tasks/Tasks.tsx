@@ -1,6 +1,7 @@
 import { MdInbox } from 'react-icons/md';
 import { SideBar } from '../../shared/layout';
 import { Button, Card, PageHeader } from '../../shared/components';
+import * as S from './styles';
 
 export const Tasks = () => {
   return (
@@ -12,29 +13,55 @@ export const Tasks = () => {
         action={<Button>Novo</Button>}
       />
 
-      <Card
-        stateTask="Em Atraso"
-        titleTask="Título da Task"
-        description="Descrição da task"
-      />
+      <S.Container>
+        <Card
+          stateTask="Em Atraso"
+          titleTask="Título da Task"
+          description="Descrição da task"
+        />
 
-      <Card
-        stateTask="Em Atraso"
-        titleTask="Título da Task"
-        description="Descrição da task"
-      />
+        <Card
+          stateTask="Em Atraso"
+          titleTask="Título da Task"
+          description="Descrição da task"
+        />
 
-      <Card
-        stateTask="Em Atraso"
-        titleTask="Título da Task"
-        description="Descrição da task"
-      />
+        <Card
+          stateTask="Em Atraso"
+          titleTask="Título da Task"
+          description="Descrição da task"
+        />
 
-      <Card
-        stateTask="Em Atraso"
-        titleTask="Título da Task"
-        description="Descrição da task"
-      />
+        <Card
+          stateTask="Em Atraso"
+          titleTask="Título da Task"
+          description="Descrição da task"
+        />
+
+        <Card
+          stateTask="Em Atraso"
+          titleTask="Título da Task"
+          description="Descrição da task"
+        />
+
+        <Card
+          stateTask="Em Atraso"
+          titleTask="Título da Task"
+          description="Descrição da task"
+        />
+
+        <Card
+          stateTask="Em Atraso"
+          titleTask="Título da Task"
+          description="Descrição da task"
+        />
+
+        <Card
+          stateTask="Em Atraso"
+          titleTask="Título da Task"
+          description="Descrição da task"
+        />
+      </S.Container>
     </SideBar>
   );
 };

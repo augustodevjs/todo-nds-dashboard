@@ -48,30 +48,33 @@ export const AddListModal: React.FC<Props> = ({
 
   const onSubmit: SubmitHandler<ListFormInput> = (data) => {
     setIsLoading(true);
+    // ListCreate(data).then((result) => {
+    //   if (result instanceof Error) {
+    //     setIsLoading(false);
+
+    //     Alert.callError({
+    //       title: (result as Error).name,
+    //       description: (result as Error).message,
+    //     });
+
+    //     form.reset();
+    //     onRequestClose?.();
+    //     return;
+    //   }
+
+    //   setIsLoading(false);
+
+    //   Alert.callSuccess({
+    //     title: 'Item cadastrado',
+    //     onConfirm: onRequestClose,
+    //   });
+
+    //   form.reset();
+
+    //   setData((prevData) => [...prevData, result]);
+    // });
     ListCreate(data).then((result) => {
-      if (result instanceof Error) {
-        setIsLoading(false);
-
-        Alert.callError({
-          title: (result as Error).name,
-          description: (result as Error).message,
-        });
-
-        form.reset();
-        onRequestClose?.();
-        return;
-      }
-
-      setIsLoading(false);
-
-      Alert.callSuccess({
-        title: 'Item cadastrado',
-        onConfirm: onRequestClose,
-      });
-
-      form.reset();
-
-      setData((prevData) => [...prevData, result]);
+      console.log(result);
     });
   };
 

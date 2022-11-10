@@ -61,6 +61,78 @@ export const Tasks = () => {
           titleTask="Título da Task"
           description="Descrição da task"
         />
+
+        <Card
+          stateTask="Em Atraso"
+          titleTask="Título da Task"
+          description="Descrição da task"
+        />
+
+        <Card
+          stateTask="Em Atraso"
+          titleTask="Título da Task"
+          description="Descrição da task"
+        />
+
+        <Card
+          stateTask="Em Atraso"
+          titleTask="Título da Task"
+          description="Descrição da task"
+        />
+
+        <Card
+          stateTask="Em Atraso"
+          titleTask="Título da Task"
+          description="Descrição da task"
+        />
+
+        <Card
+          stateTask="Em Atraso"
+          titleTask="Título da Task"
+          description="Descrição da task"
+        />
+
+        <Card
+          stateTask="Em Atraso"
+          titleTask="Título da Task"
+          description="Descrição da task"
+        />
+
+        <Card
+          stateTask="Em Atraso"
+          titleTask="Título da Task"
+          description="Descrição da task"
+        />
+
+        <Card
+          stateTask="Em Atraso"
+          titleTask="Título da Task"
+          description="Descrição da task"
+        />
+
+        <Card
+          stateTask="Em Atraso"
+          titleTask="Título da Task"
+          description="Descrição da task"
+        />
+
+        <Card
+          stateTask="Em Atraso"
+          titleTask="Título da Task"
+          description="Descrição da task"
+        />
+
+        <Card
+          stateTask="Em Atraso"
+          titleTask="Título da Task"
+          description="Descrição da task"
+        />
+
+        <Card
+          stateTask="Em Atraso"
+          titleTask="Título da Task"
+          description="Descrição da task"
+        />
       </S.Container>
     </SideBar>
   );

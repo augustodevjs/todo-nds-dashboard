@@ -17,13 +17,11 @@ export const Container = styled.div`
 
 export const TitleContent = styled.div`
   display: flex;
+  justify-content: space-between;
   margin-top: 0.5rem;
-  :before {
-    content: '';
-    width: 2px;
-    height: 36px;
-    background-color: #ab222e;
-    margin-right: 0.75rem;
+
+  svg {
+    cursor: pointer;
   }
 `;
 

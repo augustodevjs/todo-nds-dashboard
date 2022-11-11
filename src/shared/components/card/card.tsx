@@ -1,3 +1,4 @@
+import { FaEllipsisV } from 'react-icons/fa';
 import * as S from './styles';
 
 type CardProps = {
@@ -20,6 +21,7 @@ export const Card: React.FC<CardProps> = ({
           <h2>{titleTask}</h2>
           <p>{description}</p>
         </S.Text>
+        <FaEllipsisV />
       </S.TitleContent>
     </S.Container>
   );

@@ -18,18 +18,22 @@ export const Container = styled.main<Props>`
         margin-left: calc(3rem + 1.25rem);
       }
     `}
+
+  @media(max-width: 767px) {
+    margin-left: 68px;
+  }
 `;
 
 export const Aside = styled.aside<Props>`
   position: fixed;
   top: 0;
-  left: -30%;
+  left: 0;
   height: 100vh;
   width: 68px;
   background-color: #18181c;
   transition: 0.5s;
 
-  @media screen and (min-width: 768px) {
+  @media screen and (max-width: 768px) {
     left: 0;
   }
 

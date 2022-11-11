@@ -15,125 +15,93 @@ export const Tasks = () => {
 
       <S.Container>
         <Card
+          dateTime="24 de Outubro, 10:15"
           stateTask="Em Atraso"
           titleTask="Título da Task"
           description="Descrição da task"
         />
 
         <Card
+          dateTime="24 de Outubro, 10:15"
           stateTask="Em Atraso"
           titleTask="Título da Task"
           description="Descrição da task"
         />
 
         <Card
+          dateTime="24 de Outubro, 10:15"
           stateTask="Em Atraso"
           titleTask="Título da Task"
           description="Descrição da task"
         />
 
         <Card
+          dateTime="24 de Outubro, 10:15"
           stateTask="Em Atraso"
           titleTask="Título da Task"
           description="Descrição da task"
         />
 
         <Card
+          dateTime="24 de Outubro, 10:15"
           stateTask="Em Atraso"
           titleTask="Título da Task"
           description="Descrição da task"
         />
 
         <Card
+          dateTime="24 de Outubro, 10:15"
           stateTask="Em Atraso"
           titleTask="Título da Task"
           description="Descrição da task"
         />
 
         <Card
+          dateTime="24 de Outubro, 10:15"
           stateTask="Em Atraso"
           titleTask="Título da Task"
           description="Descrição da task"
         />
 
         <Card
+          dateTime="24 de Outubro, 10:15"
           stateTask="Em Atraso"
           titleTask="Título da Task"
           description="Descrição da task"
         />
 
         <Card
+          dateTime="24 de Outubro, 10:15"
           stateTask="Em Atraso"
           titleTask="Título da Task"
           description="Descrição da task"
         />
 
         <Card
+          dateTime="24 de Outubro, 10:15"
           stateTask="Em Atraso"
           titleTask="Título da Task"
           description="Descrição da task"
         />
 
         <Card
+          dateTime="24 de Outubro, 10:15"
           stateTask="Em Atraso"
           titleTask="Título da Task"
           description="Descrição da task"
         />
 
         <Card
-          stateTask="Em Atraso"
-          titleTask="Título da Task"
-          description="Descrição da task"
-        />
-
-        <Card
-          stateTask="Em Atraso"
-          titleTask="Título da Task"
-          description="Descrição da task"
-        />
-
-        <Card
-          stateTask="Em Atraso"
-          titleTask="Título da Task"
-          description="Descrição da task"
-        />
-
-        <Card
-          stateTask="Em Atraso"
-          titleTask="Título da Task"
-          description="Descrição da task"
-        />
-
-        <Card
-          stateTask="Em Atraso"
-          titleTask="Título da Task"
-          description="Descrição da task"
-        />
-
-        <Card
-          stateTask="Em Atraso"
-          titleTask="Título da Task"
-          description="Descrição da task"
-        />
-
-        <Card
-          stateTask="Em Atraso"
-          titleTask="Título da Task"
-          description="Descrição da task"
-        />
-
-        <Card
-          stateTask="Em Atraso"
-          titleTask="Título da Task"
-          description="Descrição da task"
-        />
-
-        <Card
+          dateTime="24 de Outubro, 10:15"
           stateTask="Em Atraso"
           titleTask="Título da Task"
           description="Descrição da task"
         />
       </S.Container>
+
+      <S.GroupButton>
+        <Button>Carregar mais</Button>
+      </S.GroupButton>
     </SideBar>
   );
 };
